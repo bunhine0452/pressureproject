@@ -1,0 +1,8 @@
+streamlit
+pandas
+Pillow
+plotly
+numpy
+imbalanced-learn
+joblib
+fpdf
