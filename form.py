@@ -312,8 +312,9 @@ def form_page():
                 st.markdown(f'상위<span style="color:#ed7a9e;">{hypertension_rank}%</span>로 매우 건강한 편입니다.', unsafe_allow_html=True)
 
             
-            font_regular = os.path.join(os.getcwd(), 'fonts', 'NanumGothic.ttf')
-            font_bold = os.path.join(os.getcwd(), 'fonts', 'NanumGothicBold.ttf')
+            font_regular = 'fonts/NanumGothic.ttf'
+            font_bold = 'fonts/NanumGothicBold.ttf'
+            
             class PDF(FPDF):
                 def header(self):
                     # 배경색 설정 (페이지 전체를 덮는 사각형 그리기)
