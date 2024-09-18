@@ -312,8 +312,8 @@ def form_page():
                 st.markdown(f'상위<span style="color:#ed7a9e;">{hypertension_rank}%</span>로 매우 건강한 편입니다.', unsafe_allow_html=True)
 
             
-            font_regular = './fonts/NanumGothic.ttf'
-            font_bold = './fonts/NanumGothicBold.ttf'
+            font_regular = '/mount/src/pressureproject/fonts/NanumGothic.ttf'
+            font_bold = '/mount/src/pressureproject/fonts/NanumGothicBold.ttf'
             
             class PDF(FPDF):
                 def header(self):
