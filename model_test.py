@@ -104,15 +104,15 @@ def model_test_page():
     실제 모델 사용 기반으로 여럿 모니터링을 거치며 최종적으로 사용할 모델을 선택하였습니다. 
     """)
     st.markdown('<b style="color:#31333f; font-size: 20px;">Model to use:Logistic Regression</b>', unsafe_allow_html=True)
-    a, b = st.columns([7,3])
-    with a:
-        st.markdown('<b style="color:#31333f; font-size: 20px;">Logistic Regression 의 Shap 그래프 </b>', unsafe_allow_html=True)
-        st.image('./data/results/logi/logishap.png')
-    with b:
-        st.markdown('<b style="color:#31333f; font-size: 20px;">LGBM의 의 Shap 그래프 </b>', unsafe_allow_html=True)
-        st.image('./data/results/lgbm/lgbmshap2.png')
-        st.markdown('<b style="color:#31333f; font-size: 20px;">Xgboost 의 Shap 그래프 </b>', unsafe_allow_html=True)
-        st.image('./data/results/xg/xgshap.png')
+    # a, b = st.columns([7,3])
+    # with a:
+    st.markdown('<b style="color:#31333f; font-size: 20px;">Logistic Regression 의 Shap 그래프 </b>', unsafe_allow_html=True)
+    st.image('./data/results/logi/logishap.png')
+    # with b:
+    #     st.markdown('<b style="color:#31333f; font-size: 20px;">LGBM의 의 Shap 그래프 </b>', unsafe_allow_html=True)
+    #     st.image('./data/results/lgbm/lgbmshap2.png')
+    #     st.markdown('<b style="color:#31333f; font-size: 20px;">Xgboost 의 Shap 그래프 </b>', unsafe_allow_html=True)
+    #     st.image('./data/results/xg/xgshap.png')
 
 
     st.markdown('<b style="color:#31333f; font-size: 30px;">Information</b>', unsafe_allow_html=True)
