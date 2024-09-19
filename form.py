@@ -312,102 +312,102 @@ def form_page():
                 st.markdown(f'상위<span style="color:#ed7a9e;">{hypertension_rank}%</span>로 매우 건강한 편입니다.', unsafe_allow_html=True)
 
             
-            font_regular = './fonts/NanumGothic.ttf'
-            font_bold = './fonts/NanumGothicBold.ttf'
+            # font_regular = './fonts/NanumGothic.ttf'
+            # font_bold = './fonts/NanumGothicBold.ttf'
             
-            class PDF(FPDF):
-                def header(self):
-                    # 배경색 설정 (페이지 전체를 덮는 사각형 그리기)
-                    self.set_fill_color(255, 241, 219)  # RGB 색상: 연한 보라색 (예시)
-                    self.rect(0, 0, 210, 297, 'F')  # 페이지 크기만큼 사각형 그리기 (A4: 210x297mm)
-                    self.set_y(10)  # 텍스트의 y 좌표를 초기화
-            # pdf 만들기
-            def create_pdf(profile_pdf):
-                pdf = PDF()
-                pdf.add_page()
+            # class PDF(FPDF):
+            #     def header(self):
+            #         # 배경색 설정 (페이지 전체를 덮는 사각형 그리기)
+            #         self.set_fill_color(255, 241, 219)  # RGB 색상: 연한 보라색 (예시)
+            #         self.rect(0, 0, 210, 297, 'F')  # 페이지 크기만큼 사각형 그리기 (A4: 210x297mm)
+            #         self.set_y(10)  # 텍스트의 y 좌표를 초기화
+            # # pdf 만들기
+            # def create_pdf(profile_pdf):
+            #     pdf = PDF()
+            #     pdf.add_page()
 
-                # 한글 폰트 등록 (기본 폰트 및 굵은 폰트)
-                pdf.add_font('Nanum', '', font_regular, uni=True)
-                pdf.add_font('Nanum', 'B', font_bold, uni=True)  # 굵은 폰트 등록
-                pdf.set_font('Nanum', '', 12)  # 기본 한글 폰트 사용
+            #     # 한글 폰트 등록 (기본 폰트 및 굵은 폰트)
+            #     pdf.add_font('Nanum', '', font_regular, uni=True)
+            #     pdf.add_font('Nanum', 'B', font_bold, uni=True)  # 굵은 폰트 등록
+            #     pdf.set_font('Nanum', '', 12)  # 기본 한글 폰트 사용
 
-                # 신체 정보
-                pdf.set_font("Nanum", 'B', 16)  # 굵은 폰트 사용
-                pdf.cell(200, 8, txt=f"< {name}님의 건강 보고서 >", ln=True, align='C')
-                pdf.set_font("Nanum", 'B', 12)
-                pdf.cell(200, 8, txt="신체정보", ln=True)
-                pdf.set_font("Nanum", '', 12)  # 다시 기본 폰트로 설정
-                for key, value in profile_pdf["신체정보"].items():
-                    pdf.cell(200, 8, txt=f"{key}: {value}", ln=True)
+            #     # 신체 정보
+            #     pdf.set_font("Nanum", 'B', 16)  # 굵은 폰트 사용
+            #     pdf.cell(200, 8, txt=f"< {name}님의 건강 보고서 >", ln=True, align='C')
+            #     pdf.set_font("Nanum", 'B', 12)
+            #     pdf.cell(200, 8, txt="신체정보", ln=True)
+            #     pdf.set_font("Nanum", '', 12)  # 다시 기본 폰트로 설정
+            #     for key, value in profile_pdf["신체정보"].items():
+            #         pdf.cell(200, 8, txt=f"{key}: {value}", ln=True)
 
-                # 질병 정보
-                pdf.set_font("Nanum", 'B', 12)
-                pdf.cell(200, 10, txt="질병 정보", ln=True)
-                pdf.set_font("Nanum", '', 12)
-                for key, value in profile_pdf["질병 정보"].items():
-                    pdf.cell(200, 8, txt=f"{key}: {value}", ln=True)
+            #     # 질병 정보
+            #     pdf.set_font("Nanum", 'B', 12)
+            #     pdf.cell(200, 10, txt="질병 정보", ln=True)
+            #     pdf.set_font("Nanum", '', 12)
+            #     for key, value in profile_pdf["질병 정보"].items():
+            #         pdf.cell(200, 8, txt=f"{key}: {value}", ln=True)
 
-                # 음주 관련 정보
-                pdf.set_font("Nanum", 'B', 12)
-                pdf.cell(200, 8, txt="음주 관련 정보", ln=True)
-                pdf.set_font("Nanum", '', 12)
-                for key, value in profile_pdf["음주 관련 정보"].items():
-                    pdf.cell(200, 8, txt=f"{key}: {value}", ln=True)
+            #     # 음주 관련 정보
+            #     pdf.set_font("Nanum", 'B', 12)
+            #     pdf.cell(200, 8, txt="음주 관련 정보", ln=True)
+            #     pdf.set_font("Nanum", '', 12)
+            #     for key, value in profile_pdf["음주 관련 정보"].items():
+            #         pdf.cell(200, 8, txt=f"{key}: {value}", ln=True)
 
-                # 운동 관련 정보
-                pdf.set_font("Nanum", 'B', 12)
-                pdf.cell(200, 8, txt="운동 관련 정보", ln=True)
-                pdf.set_font("Nanum", '', 12)
-                for key, value in profile_pdf["고강도 운동 관련 정보"].items():
-                    pdf.cell(200, 8, txt=f"{key}: {value}", ln=True)
-                for key, value in profile_pdf["중강도 운동 관련 정보"].items():
-                    pdf.cell(200, 8, txt=f"{key}: {value}", ln=True)
-                for key, value in profile_pdf["걷기/자전거 관련 정보"].items():
-                    pdf.cell(200, 8, txt=f"{key}: {value}", ln=True)
+            #     # 운동 관련 정보
+            #     pdf.set_font("Nanum", 'B', 12)
+            #     pdf.cell(200, 8, txt="운동 관련 정보", ln=True)
+            #     pdf.set_font("Nanum", '', 12)
+            #     for key, value in profile_pdf["고강도 운동 관련 정보"].items():
+            #         pdf.cell(200, 8, txt=f"{key}: {value}", ln=True)
+            #     for key, value in profile_pdf["중강도 운동 관련 정보"].items():
+            #         pdf.cell(200, 8, txt=f"{key}: {value}", ln=True)
+            #     for key, value in profile_pdf["걷기/자전거 관련 정보"].items():
+            #         pdf.cell(200, 8, txt=f"{key}: {value}", ln=True)
 
-                # 점수 및 확률 정보
-                pdf.set_font("Nanum", 'B', 12)
-                pdf.cell(200, 8, txt="점수 및 확률 정보", ln=True)
-                pdf.set_font("Nanum", '', 12)
-                for key, value in profile_pdf["점수 및 확률 정보"].items():
-                    pdf.cell(200, 8, txt=f"{key}: {value}", ln=True)
+            #     # 점수 및 확률 정보
+            #     pdf.set_font("Nanum", 'B', 12)
+            #     pdf.cell(200, 8, txt="점수 및 확률 정보", ln=True)
+            #     pdf.set_font("Nanum", '', 12)
+            #     for key, value in profile_pdf["점수 및 확률 정보"].items():
+            #         pdf.cell(200, 8, txt=f"{key}: {value}", ln=True)
                         
-                # 두 번째 페이지 추가 (그래프들 삽입)
-                pdf.add_page()
-                pdf.set_font("Nanum", 'B', 16)
-                pdf.cell(200, 8, txt="< 나이대/성별 지표 계산 정보 >", ln=True, align='C')
-                pdf.set_font("Nanum", 'B', 12)
+            #     # 두 번째 페이지 추가 (그래프들 삽입)
+            #     pdf.add_page()
+            #     pdf.set_font("Nanum", 'B', 16)
+            #     pdf.cell(200, 8, txt="< 나이대/성별 지표 계산 정보 >", ln=True, align='C')
+            #     pdf.set_font("Nanum", 'B', 12)
 
-                pdf.set_font("Nanum", 'B', 12)
-                pdf.cell(200, 8, txt="음주 점수", ln=True)
-                pdf.set_font("Nanum", '', 12)
-                pdf.cell(200, 8, txt=f"동나이대, 성별의 평균 음주 점수는:{alcohol_score_mean}점 입니다.", ln=True)
-                pdf.cell(200, 8, txt=f"{name}님의 음주 점수는{round(alcohol_score,2)}점 입니다", ln=True)
-                pdf.cell(200, 8, txt=f"전체 분포에서 약 상위{alcohol_score_rank}% 입니다.", ln=True)
+            #     pdf.set_font("Nanum", 'B', 12)
+            #     pdf.cell(200, 8, txt="음주 점수", ln=True)
+            #     pdf.set_font("Nanum", '', 12)
+            #     pdf.cell(200, 8, txt=f"동나이대, 성별의 평균 음주 점수는:{alcohol_score_mean}점 입니다.", ln=True)
+            #     pdf.cell(200, 8, txt=f"{name}님의 음주 점수는{round(alcohol_score,2)}점 입니다", ln=True)
+            #     pdf.cell(200, 8, txt=f"전체 분포에서 약 상위{alcohol_score_rank}% 입니다.", ln=True)
 
-                pdf.set_font("Nanum", 'B', 12)
-                pdf.cell(200, 8, txt="신체 활동 점수", ln=True)
-                pdf.set_font("Nanum", '', 12)
-                pdf.cell(200, 8, txt=f"동나이대, 성별의 평균 신체활동 점수는:{physical_activity_mean}점 입니다.", ln=True)
-                pdf.cell(200, 8, txt=f"{name}님의 신체활동 점수는{round(physical_activity_score,2)}점 입니다", ln=True)
-                pdf.cell(200, 8, txt=f"전체 분포에서 약 상위{physical_activity_rank}% 입니다.", ln=True)
+            #     pdf.set_font("Nanum", 'B', 12)
+            #     pdf.cell(200, 8, txt="신체 활동 점수", ln=True)
+            #     pdf.set_font("Nanum", '', 12)
+            #     pdf.cell(200, 8, txt=f"동나이대, 성별의 평균 신체활동 점수는:{physical_activity_mean}점 입니다.", ln=True)
+            #     pdf.cell(200, 8, txt=f"{name}님의 신체활동 점수는{round(physical_activity_score,2)}점 입니다", ln=True)
+            #     pdf.cell(200, 8, txt=f"전체 분포에서 약 상위{physical_activity_rank}% 입니다.", ln=True)
                 
-                pdf.set_font("Nanum", 'B', 12)             
-                pdf.cell(200, 8, txt="고혈압 확률", ln=True)
-                pdf.set_font("Nanum", '', 12)
-                pdf.cell(200, 8, txt=f"동나이대, 성별의 평균 고혈압 확률은:{hypertension_mean}%입니다.", ln=True)
-                pdf.cell(200, 8, txt=f"{name}님의 고혈압 확률은{round(hypertension_proba*100,2)}%입니다. 전체 분포에서 약 상위{hypertension_rank}% 입니다", ln=True)
-                pdf.cell(200, 8, txt=f"전체 분포에서 약 상위{hypertension_rank}% 입니다.", ln=True)
+            #     pdf.set_font("Nanum", 'B', 12)             
+            #     pdf.cell(200, 8, txt="고혈압 확률", ln=True)
+            #     pdf.set_font("Nanum", '', 12)
+            #     pdf.cell(200, 8, txt=f"동나이대, 성별의 평균 고혈압 확률은:{hypertension_mean}%입니다.", ln=True)
+            #     pdf.cell(200, 8, txt=f"{name}님의 고혈압 확률은{round(hypertension_proba*100,2)}%입니다. 전체 분포에서 약 상위{hypertension_rank}% 입니다", ln=True)
+            #     pdf.cell(200, 8, txt=f"전체 분포에서 약 상위{hypertension_rank}% 입니다.", ln=True)
 
-                return pdf
-            # PDF 다운로드 버튼
-            pdf = create_pdf(profile_pdf)
+            #     return pdf
+            # # PDF 다운로드 버튼
+            # pdf = create_pdf(profile_pdf)
 
-            # PDF를 BytesIO로 변환
-            pdf_buffer = BytesIO()
-            pdf_output = pdf.output(dest='S').encode('latin1')  # PDF 데이터를 메모리로 출력
-            pdf_buffer.write(pdf_output)
-            pdf_buffer.seek(0)
+            # # PDF를 BytesIO로 변환
+            # pdf_buffer = BytesIO()
+            # pdf_output = pdf.output(dest='S').encode('latin1')  # PDF 데이터를 메모리로 출력
+            # pdf_buffer.write(pdf_output)
+            # pdf_buffer.seek(0)
 
-            # Streamlit에서 파일 다운로드
-            st.download_button(label="PDF로 저장하기", data=pdf_buffer, file_name=f"{name}님 건강보고서.pdf", mime="application/pdf")
+            # # Streamlit에서 파일 다운로드
+            # st.download_button(label="PDF로 저장하기", data=pdf_buffer, file_name=f"{name}님 건강보고서.pdf", mime="application/pdf")
