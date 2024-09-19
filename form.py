@@ -122,6 +122,7 @@ def form_page():
                 walk_min = st.number_input("유산소 운동 분")
         # 제출 버튼 생성
         st.markdown('######')
+        st.markdown('####### 예측 결과값이 실제와 틀릴수도 있습니다. 맹신하시면 안됩니다.')
         submitted = st.form_submit_button('제출')
 
     # 제출이 완료되면 결과 출력
