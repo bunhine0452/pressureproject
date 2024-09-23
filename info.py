@@ -169,4 +169,16 @@ def info_page():
             st.markdown('#')
             st.markdown('#')   
             st.image('./data/image/logos.png')
+
+            st.markdown(
+                """
+                <div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
+                    <a href="https://hypresureteam.streamlit.app" target="_blank" style="text-decoration: none;">
+                        <div style="display: inline-block; padding: 10px 20px; background-color: rgb(83, 100, 147); color: white; border-radius: 5px; text-align: center; font-weight: bold;">
+                            챗봇 모델 보러가기
+                        </div>
+                    </a>
+                </div>
+                """,
+                unsafe_allow_html=True
         
