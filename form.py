@@ -203,7 +203,45 @@ def form_page():
                             "고혈압 확률": f'{round(hypertension_proba * 100, 2)}%'  # 고혈압 확률
                         }
                     }
-            st.json(profile_pdf)
+            st.markdown("##### 신체 정보", unsafe_allow_html=True)
+            st.markdown(f"""
+            <div style="border: 2px solid #dddbc5; border-radius: 10px; padding: 10px;">
+            - 이름: {profile_pdf['신체정보']['이름']}<br>
+            - 만 나이: {profile_pdf['신체정보']['만 나이']}<br>
+            - 성별: {profile_pdf['신체정보']['성별']}<br>
+            - 키: {profile_pdf['신체정보']['키']}<br>
+            - 체중: {profile_pdf['신체정보']['체중']}<br>
+            - 허리둘레: {profile_pdf['신체정보']['허리둘레']}
+            </div>
+            """, unsafe_allow_html=True)
+
+            st.markdown("##### 질병 정보", unsafe_allow_html=True)
+            st.markdown(f"""
+            <div style="border: 2px solid #dddbc5; border-radius: 10px; padding: 10px;">
+            - 이상지질혈증 여부: {profile_pdf['질병 정보']['이상지질혈증 여부']}<br>
+            - 당뇨병 여부: {profile_pdf['질병 정보']['당뇨병 여부']}
+            </div>
+            """, unsafe_allow_html=True)
+
+            st.markdown("##### 음주 점수", unsafe_allow_html=True)
+            st.markdown(f"""
+            <div style="border: 2px solid #dddbc5; border-radius: 10px; padding: 10px;">
+            - 음주 점수: {profile_pdf['점수 및 확률 정보']['음주 점수']}
+            </div>
+            """, unsafe_allow_html=True)
+            st.markdown("##### 신체활동 점수", unsafe_allow_html=True)
+            st.markdown(f"""
+            <div style="border: 2px solid #dddbc5; border-radius: 10px; padding: 10px;">
+            - 신체활동 점수: {profile_pdf['점수 및 확률 정보']['신체활동 점수']}
+            </div>
+            """, unsafe_allow_html=True)
+            
+            st.markdown("##### 고혈압 확률", unsafe_allow_html=True)
+            st.markdown(f"""
+            <div style="border: 2px solid #dddbc5; border-radius: 10px; padding: 10px;">
+            - 고혈압 확률: {profile_pdf['점수 및 확률 정보']['고혈압 확률']}
+            </div>
+            """, unsafe_allow_html=True)
             
         with b:
             # 상위 % 계산 함수
