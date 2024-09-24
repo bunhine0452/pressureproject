@@ -46,8 +46,8 @@ selected_page = st.sidebar.radio("이동하기", page_select.keys(), key="value"
 page_select[selected_page]()
 st.sidebar.markdown(
     """
-    <a href="https://highbloodpressure.streamlit.app" target="_blank">
-        👉 웹사이트로 이동하기
+    <a href="https://highbloodpressure.streamlit.app" target="_blank" style="color: #efebe7; font-size: 12px;">
+        👉 챗봇 모델 구현과정으로 이동하기
     </a>
     """, 
     unsafe_allow_html=True
