@@ -13,7 +13,7 @@ from io import BytesIO
 import json
 
 # funcs.py
-from funcs import load_css, load_local_font, linegaro, linesero, csv , calculate_proportions , remove_outliers ,calculate_alcohol_score, calculate_physical_activity_score, calculate_whtR_category
+from funcs import load_css, load_local_font, linegaro, linesero, csv , calculate_proportions , remove_outliers ,calculate_alcohol_score, calculate_physical_activity_score, calculate_whtR_category, cal_waist_ideal
 
 # 페이지 로드
 from info import info_page 
