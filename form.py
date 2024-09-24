@@ -214,34 +214,39 @@ def form_page():
             - 허리둘레: {profile_pdf['신체정보']['허리둘레']}
             </div>
             """, unsafe_allow_html=True)
-
-            st.markdown("##### 질병 정보", unsafe_allow_html=True)
-            st.markdown(f"""
-            <div style="border: 2px solid #dddbc5; border-radius: 10px; padding: 10px;">
-            - 이상지질혈증 여부: {profile_pdf['질병 정보']['이상지질혈증 여부']}<br>
-            - 당뇨병 여부: {profile_pdf['질병 정보']['당뇨병 여부']}
-            </div>
-            """, unsafe_allow_html=True)
-
-            st.markdown("##### 음주 점수", unsafe_allow_html=True)
-            st.markdown(f"""
-            <div style="border: 2px solid #dddbc5; border-radius: 10px; padding: 10px;">
-            - 음주 점수: {profile_pdf['점수 및 확률 정보']['음주 점수']}
-            </div>
-            """, unsafe_allow_html=True)
-            st.markdown("##### 신체활동 점수", unsafe_allow_html=True)
-            st.markdown(f"""
-            <div style="border: 2px solid #dddbc5; border-radius: 10px; padding: 10px;">
-            - 신체활동 점수: {profile_pdf['점수 및 확률 정보']['신체활동 점수']}
-            </div>
-            """, unsafe_allow_html=True)
-            
-            st.markdown("##### 고혈압 확률", unsafe_allow_html=True)
-            st.markdown(f"""
-            <div style="border: 2px solid #dddbc5; border-radius: 10px; padding: 10px;">
-            - 고혈압 확률: {profile_pdf['점수 및 확률 정보']['고혈압 확률']}
-            </div>
-            """, unsafe_allow_html=True)
+            st.write('')
+            re1 , re2 = st.columns(2)
+            with re1: 
+                st.markdown("##### 질병 정보", unsafe_allow_html=True)
+                st.markdown(f"""
+                <div style="border: 2px solid #7498bf; border-radius: 10px; padding: 10px;">
+                - 이상지질혈증 여부: {profile_pdf['질병 정보']['이상지질혈증 여부']}<br>
+                - 당뇨병 여부: {profile_pdf['질병 정보']['당뇨병 여부']}
+                </div>
+                """, unsafe_allow_html=True)
+            with re2:
+                st.markdown("##### 음주 점수", unsafe_allow_html=True)
+                st.markdown(f"""
+                <div style="border: 2px solid #ed7a9e; border-radius: 10px; padding: 10px;">
+                - 음주 점수: {profile_pdf['점수 및 확률 정보']['음주 점수']}
+                </div>
+                """, unsafe_allow_html=True)
+            st.write('')
+            re3 , re4 = st.columns(2)
+            with re3:
+                st.markdown("##### 신체활동 점수", unsafe_allow_html=True)
+                st.markdown(f"""
+                <div style="border: 2px solid #7498bf; border-radius: 10px; padding: 10px;">
+                - 신체활동 점수: {profile_pdf['점수 및 확률 정보']['신체활동 점수']}
+                </div>
+                """, unsafe_allow_html=True)
+            with re4:
+                st.markdown("##### 고혈압 확률", unsafe_allow_html=True)
+                st.markdown(f"""
+                <div style="border: 2px solid #ed7a9e; border-radius: 10px; padding: 10px;">
+                - 고혈압 확률: {profile_pdf['점수 및 확률 정보']['고혈압 확률']}
+                </div>
+                """, unsafe_allow_html=True)
             
         with b:
             # 상위 % 계산 함수
