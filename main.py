@@ -20,6 +20,7 @@ from info import info_page
 from dashboard import dashboard_page
 from model_test import model_test_page
 from form import form_page
+from final_dash import final_dash
 # 페이지 설정
 st.set_page_config(page_title='❤️‍🩹고혈의 고혈압', page_icon='❤️‍🩹', layout='wide')
 
@@ -38,6 +39,7 @@ page_select = {
     "데이터 살펴보기": dashboard_page,
     "모델 테스트 결과": model_test_page,
     "나의 고혈압 확률 예측해보기": form_page,
+    "나의 건강 대시보드": final_dash,
 }
 
 # 사이드바에서 페이지 선택

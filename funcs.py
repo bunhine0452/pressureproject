@@ -192,6 +192,35 @@ def calculate_whtR_category(gender,waist,height):
                 else:
                     return 5
                 
+def cal_waist_ideal(height, gender,inch):
+    """
+    주어진 신장(cm)과 성별에 따라 이상적인 허리둘레 범위를 계산하는 함수입니다.
+
+    Parameters:
+        height_cm (float): 신장(cm)
+        gender (str): 성별 ("남자" 또는 "여자")
+
+    Returns:
+        tuple: (최소 허리둘레(cm), 최대 허리둘레(cm))
+    """
+    if gender == "남자":
+        WHtR_min = 0.43
+        WHtR_max = 0.50
+    elif gender == "여자":
+        WHtR_min = 0.42
+        WHtR_max = 0.47
+    else:
+        raise ValueError("성별은 '남자' 또는 '여자'로 입력해주세요.")
+
+    if inch == True:
+        waist_min = height * WHtR_min / 2.54
+        waist_max = height * WHtR_max / 2.54
+    else:
+        waist_min = height * WHtR_min
+        waist_max = height * WHtR_max
+
+    return {'waist_min': waist_min, 'waist_max': waist_max}
+                
 # model 결과 선택 함수
 def model_result(model):
         if model == 'Logistic Regression':

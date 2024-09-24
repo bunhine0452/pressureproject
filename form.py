@@ -163,11 +163,11 @@ def form_page():
             profile_pdf = {
                         "신체정보": {
                             "이름": name,
-                            "만 나이": f'{age} 세',
+                            "만 나이": f'{age}',
                             "성별": gender,
-                            "키": f'{height}cm',
-                            "체중": f'{weight}kg',
-                            "허리둘레": f'{waist}cm',
+                            "키": f'{height}',
+                            "체중": f'{weight}',
+                            "허리둘레": f'{waist}',
                         },
                         "질병 정보": {
                             "이상지질혈증 여부": disease1,
@@ -198,11 +198,12 @@ def form_page():
                         },
                         # 음주 점수, 신체활동 점수, 고혈압 확률 추가
                         "점수 및 확률 정보": {
-                            "음주 점수": f'{alcohol_score} 점',
-                            "신체활동 점수": f'{physical_activity_score} 점',  
-                            "고혈압 확률": f'{round(hypertension_proba * 100, 2)}%'  # 고혈압 확률
+                            "음주 점수": f'{alcohol_score}',
+                            "신체활동 점수": f'{physical_activity_score}',  
+                            "고혈압 확률": f'{round(hypertension_proba * 100, 2)}'  # 고혈압 확률
                         }
                     }
+            st.session_state['profile_pdf'] = profile_pdf
             st.markdown("##### 신체 정보", unsafe_allow_html=True)
             st.markdown(f"""
             <div style="border: 2px solid #dddbc5; border-radius: 10px; padding: 10px;">
@@ -243,7 +244,7 @@ def form_page():
             with re4:
                 st.markdown("##### 고혈압 확률", unsafe_allow_html=True)
                 st.markdown(f"""
-                <div style="border: 2px solid #ed7a9e; border-radius: 10px; padding: 10px;">
+                <div style="border: 2px solid #ed7a9e; border-radius: 10px; padding: 10px;  ">
                 - 고혈압 확률: {profile_pdf['점수 및 확률 정보']['고혈압 확률']}
                 </div>
                 """, unsafe_allow_html=True)
