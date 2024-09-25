@@ -17,6 +17,14 @@ def info_page():
     st.sidebar.markdown('<p style="font-size: 13px; color:rgba(218,192,167,1);"> 신상길</br>tkdrlfdk920@gmail.com</p>', unsafe_allow_html=True)
     st.sidebar.markdown('<p style="font-size: 13px; color:rgba(218,192,167,1);"> 정다운</br>jdu1941@gmail.com</p>', unsafe_allow_html=True)
     st.sidebar.markdown("")
+    st.sidebar.markdown("""
+    <div align="center">
+    <a href="https://www.cutercounter.com/" target="_blank">
+    <img src="https://www.cutercounter.com/hits.php?id=huxqdpfk&nd=6&style=13" border="0" alt="hit counter">
+    </a>
+    </div>
+""", unsafe_allow_html=True)
+""", unsafe_allow_html=True)
     logo = Image.open('./data/image/Teamicon-removebg-preview.png')
     a,b,c= st.columns([1,7,2])
     with a:
