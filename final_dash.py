@@ -389,7 +389,7 @@ def final_dash():
         
         
         alcohol_score_rank = calculate_rank(filtered_df, '음주 점수', int(profile_score['음주 점수']))
-        plot_distribution2(filtered_df, '음주 점수', int(profile_score['음주 점수']), "음주 점수", alcohol_score_rank)        
+        plot_distribution3(filtered_df, '음주 점수', int(profile_score['음주 점수']), "음주 점수", alcohol_score_rank)        
         
         hypertension_rank = calculate_rank(filtered_df, '고혈압 확률', float(profile_score['고혈압 확률']))
         hypertension_rank = round(hypertension_rank,2)
