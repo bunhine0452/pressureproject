@@ -9,4 +9,5 @@ https://highbloodpressure.streamlit.app
 
 
   <최종 결과대시보드(streamlit cloud용)>
-<img width="1162" alt="image" src="https://github.com/user-attachments/assets/fdbf4531-ec45-44f5-b363-1a307938ab82">
+<img width="1150" alt="image" src="https://github.com/user-attachments/assets/c69d540d-c4bd-482f-a74d-13ea122c2222">
+
