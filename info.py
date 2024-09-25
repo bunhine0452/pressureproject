@@ -15,7 +15,7 @@ def info_page():
     st.sidebar.markdown('<p style="font-size: 13px; color:rgba(218,192,167,1);"> 김현빈</br>hb000122@gmail.com </p>', unsafe_allow_html=True)
     st.sidebar.markdown('<p style="font-size: 13px; color:rgba(218,192,167,1);"> 이정화</br>happychristmas1995@gmail.com</p>', unsafe_allow_html=True)
     st.sidebar.markdown('<p style="font-size: 13px; color:rgba(218,192,167,1);"> 신상길</br>tkdrlfdk920@gmail.com</p>', unsafe_allow_html=True)
-    st.sidebar.markdown('<p style="font-size: 13px; color:rgba(218,192,167,1);"> 정다운</br>hb000122@gmail.com</p>', unsafe_allow_html=True)
+    st.sidebar.markdown('<p style="font-size: 13px; color:rgba(218,192,167,1);"> 정다운</br>jdu1941@gmail.com</p>', unsafe_allow_html=True)
     st.sidebar.markdown("")
     logo = Image.open('./data/image/Teamicon-removebg-preview.png')
     a,b,c= st.columns([1,7,2])
