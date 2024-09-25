@@ -6,6 +6,28 @@ from PIL import Image
 import numpy as np
 from funcs import cal_waist_ideal, linegaro ,linesero 
 
+
+# import os
+# import requests
+# import streamlit as st
+# from langchain.document_loaders import TextLoader, PyPDFLoader, UnstructuredWordDocumentLoader, CSVLoader
+# from langchain.embeddings import HuggingFaceEmbeddings
+# from langchain.vectorstores import FAISS
+# from langchain.prompts import PromptTemplate
+# from sentence_transformers import SentenceTransformer
+# import torch
+# from langchain.text_splitter import RecursiveCharacterTextSplitter
+# from langchain.memory import ConversationBufferMemory
+# from langchain.chains.summarize import load_summarize_chain
+# from langchain.llms import OpenAI
+# import time
+
+def type_effect(text, container):
+    placeholder = container.empty()
+    for i in range(len(text)):
+        placeholder.markdown(text[:i+1])
+        time.sleep(0.02)  # 타이핑 속도 조절
+
 def final_dash():
     st.sidebar.markdown(
         """
@@ -27,7 +49,7 @@ def final_dash():
     
     st.markdown(f"# {profile_pdf['신체정보']['이름']} 님의 건강 대시보드")
     linegaro()
-    big_a , big_b , big_c = st.columns([1,1,1])
+    big_a , big_b = st.columns([1,2.5])
     with big_a:
         # 기본 정보 섹션
         profile_info = profile_pdf['신체정보']
@@ -58,97 +80,99 @@ def final_dash():
         </div>
         """, unsafe_allow_html=True) 
     
-    with big_b:        
-        # WhtR 계산 및 표시
-        height_m = float(profile_pdf['신체정보']['키'].replace('cm', ''))
-        waist = float(profile_pdf['신체정보']['허리둘레'].replace('cm', ''))
-        whtr = waist / height_m
-        
-        # WhtR 바 차트 생성
-        fig_whtr = go.Figure()
-        
-        # 배경 바 추가
-        fig_whtr.add_trace(go.Bar(
-            y=['WhtR'],
-            x=[0.63],
-            orientation='h',
-            marker=dict(color='rgba(0,0,0,0.1)'),
-            hoverinfo='none',
-            showlegend=False
-        ))
-        
-        # 실제 WhtR 값을 나타내는 바 추가
-        fig_whtr.add_trace(go.Bar(
-            y=['WhtR'],
-            x=[whtr],
-            orientation='h',
-            marker=dict(color='rgba(0,0,0,0.8)'),
-            hoverinfo='none',
-            showlegend=False
-        ))
-        # 레이아웃 설정
-        if profile_pdf['신체정보']['성별'] == '남성':
-            fig_whtr.update_layout(
-                title='WhtR (허리둘레-신장 비율)',
-                height=150,
-                width=300,
-                margin=dict(l=0, r=0, t=30, b=0),
-                xaxis=dict(
-                    autorange=True,  # 오토스케일 적용
-                    tickvals=[0, 0.43, 0.50, 0.58, 0.63],
-                    ticktext=['0', '0.43', '0.50', '0.58', '0.63'],
-                    title='WhtR 값'
-                ),
-                yaxis=dict(showticklabels=False),
-                plot_bgcolor='rgba(0,0,0,0)',
-                paper_bgcolor='rgba(0,0,0,0)'
+    with big_b:
+        re1, re2 ,re3 ,re4 = st.columns([1,1,1,1])
+        with re1:        
+            # WhtR 계산 및 표시
+            height_m = float(profile_pdf['신체정보']['키'].replace('cm', ''))
+            waist = float(profile_pdf['신체정보']['허리둘레'].replace('cm', ''))
+            whtr = waist / height_m
+            
+            # WhtR ��� 차트 생성
+            fig_whtr = go.Figure()
+            
+            # 배경 바 추가
+            fig_whtr.add_trace(go.Bar(
+                y=['WhtR'],
+                x=[0.63],
+                orientation='h',
+                marker=dict(color='rgba(0,0,0,0.1)'),
+                hoverinfo='none',
+                showlegend=False
+            ))
+            
+            # 실제 WhtR 값을 나타내는 바 추가
+            fig_whtr.add_trace(go.Bar(
+                y=['WhtR'],
+                x=[whtr],
+                orientation='h',
+                marker=dict(color='rgba(0,0,0,0.8)'),
+                hoverinfo='none',
+                showlegend=False
+            ))
+            # 레이아웃 설정
+            if profile_pdf['신체정보']['성별'] == '남성':
+                fig_whtr.update_layout(
+                    title='WhtR (허리둘레-신장 비율)',
+                    height=150,
+                    width=300,
+                    margin=dict(l=0, r=0, t=30, b=0),
+                    xaxis=dict(
+                        autorange=True,  # 오토스케일 적용
+                        tickvals=[0, 0.43, 0.50, 0.58, 0.63],
+                        ticktext=['0', '0.43', '0.50', '0.58', '0.63'],
+                        title='WhtR 값'
+                    ),
+                    yaxis=dict(showticklabels=False),
+                    plot_bgcolor='rgba(0,0,0,0)',
+                    paper_bgcolor='rgba(0,0,0,0)'
+                )
+            else:
+                fig_whtr.update_layout(
+                    title='WhtR (허리둘레-신장 비율)',
+                    height=150,
+                    width=300,
+                    margin=dict(l=0, r=0, t=30, b=0),
+                    xaxis=dict(
+                        autorange=True,  # 오토스케일 적용
+                        tickvals=[0, 0.42, 0.47, 0.54, 0.59],
+                        ticktext=['0', '0.42', '0.47', '0.54', '0.59'],
+                        title='WhtR 값'
+                    ),
+                    yaxis=dict(showticklabels=False),
+                    plot_bgcolor='rgba(0,0,0,0)',
+                    paper_bgcolor='rgba(0,0,0,0)'
+                )
+            # 색상 구간 추가
+            colors = ['#50a7d9', '#77dd77', '#f8e47e', '#ed7777']
+            if profile_pdf['신체정보']['성별'] == '남성':
+                ranges = [0,0.43, 0.50, 0.58, 0.68]
+            else:
+                ranges = [0,0.42, 0.47, 0.59, 0.64]
+            
+            for i in range(len(colors)):
+                fig_whtr.add_shape(
+                    type='rect',
+                    x0=ranges[i],
+                    x1=ranges[i+1],
+                    y0=0,
+                    y1=1,
+                    yref='paper',
+                    fillcolor=colors[i],
+                    opacity=0.3,
+                    layer='below',
+                    line_width=0
+                )
+            # WhtR 값 표시
+            fig_whtr.add_annotation(
+                x=whtr,
+                y=1,
+                text=f'WhtR: {whtr:.2f}',
+                showarrow=True,
+                arrowhead=2,
+                yshift=10
             )
-        else:
-            fig_whtr.update_layout(
-                title='WhtR (허리둘레-신장 비율)',
-                height=150,
-                width=300,
-                margin=dict(l=0, r=0, t=30, b=0),
-                xaxis=dict(
-                    autorange=True,  # 오토스케일 적용
-                    tickvals=[0, 0.42, 0.47, 0.54, 0.59],
-                    ticktext=['0', '0.42', '0.47', '0.54', '0.59'],
-                    title='WhtR 값'
-                ),
-                yaxis=dict(showticklabels=False),
-                plot_bgcolor='rgba(0,0,0,0)',
-                paper_bgcolor='rgba(0,0,0,0)'
-            )
-        # 색상 구간 추가
-        colors = ['#50a7d9', '#77dd77', '#f8e47e', '#ed7777']
-        if profile_pdf['신체정보']['성별'] == '남성':
-            ranges = [0,0.43, 0.50, 0.58, 0.68]
-        else:
-            ranges = [0,0.42, 0.47, 0.59, 0.64]
-        
-        for i in range(len(colors)):
-            fig_whtr.add_shape(
-                type='rect',
-                x0=ranges[i],
-                x1=ranges[i+1],
-                y0=0,
-                y1=1,
-                yref='paper',
-                fillcolor=colors[i],
-                opacity=0.3,
-                layer='below',
-                line_width=0
-            )
-        # WhtR 값 표시
-        fig_whtr.add_annotation(
-            x=whtr,
-            y=1,
-            text=f'WhtR: {whtr:.2f}',
-            showarrow=True,
-            arrowhead=2,
-            yshift=10
-        )
-        st.plotly_chart(fig_whtr)
+            st.plotly_chart(fig_whtr)
         
         # 상위 % 계산 함수
         def calculate_rank(df, column, profile_value):
@@ -336,8 +360,6 @@ def final_dash():
             colors = ['#cc0000','#ff3333', '#ff6666', '#ffcccc']  # 연한 빨간색 -> 진한 빨간색 그라데이션
             ranges = [100, 75, 50, 25, 0]  # 상위 % 구간 설정  
                 
-
-
             for i in range(len(colors)):
                 fig.add_shape(
                     type='rect',
@@ -382,22 +404,19 @@ def final_dash():
             return fig
 
 
-
-        physical_activity_rank = calculate_rank(filtered_df, '신체활동점수', act_score)                
-        physical_activity_rank = round(physical_activity_rank,2)
-        plot_distribution(filtered_df, '신체활동점수', act_score, "신체활동 점수", physical_activity_rank)
-        
-        
-        alcohol_score_rank = calculate_rank(filtered_df, '음주 점수', int(profile_score['음주 점수']))
-        plot_distribution3(filtered_df, '음주 점수', int(profile_score['음주 점수']), "음주 점수", alcohol_score_rank)        
-        
-        hypertension_rank = calculate_rank(filtered_df, '고혈압 확률', float(profile_score['고혈압 확률']))
-        hypertension_rank = round(hypertension_rank,2)
-        plot_distribution3(filtered_df, '고혈압 확률', float(profile_score['고혈압 확률']), "고혈압 확률", hypertension_rank)
-        
-    with big_c:
-
-        
+        with re2:
+            physical_activity_rank = calculate_rank(filtered_df, '신체활동점수', act_score)                
+            physical_activity_rank = round(physical_activity_rank,2)
+            plot_distribution(filtered_df, '신체활동점수', act_score, "신체활동 점수", physical_activity_rank)
+            
+        with re3:
+            alcohol_score_rank = calculate_rank(filtered_df, '음주 점수', int(profile_score['음주 점수']))
+            plot_distribution3(filtered_df, '음주 점수', int(profile_score['음주 점수']), "음주 점수", alcohol_score_rank)        
+        with re4:
+            hypertension_rank = calculate_rank(filtered_df, '고혈압 확률', float(profile_score['고혈압 확률']))
+            hypertension_rank = round(hypertension_rank,2)
+            plot_distribution3(filtered_df, '고혈압 확률', float(profile_score['고혈압 확률']), "고혈압 확률", hypertension_rank)
+         
         # cm 
         ideal_waist = cal_waist_ideal(round(float(profile_pdf['신체정보']['키']),2), profile_pdf['신체정보']['성별'], False)
         # 인치
@@ -482,9 +501,9 @@ def final_dash():
                 if waist_min <= waist <= waist_max:
                     words += f' 허리둘레가 이상적인 범위 안에 있어요.'
                 if waist < waist_min:
-                    words += f' 허리둘레가 약 **{waist_min - waist} cm** 벗어났습니다.(약 **{round((waist_min - waist)/2.54,2)}** 인치)'
+                    words += f' 허리둘레가 약 **{round((waist_min - waist),2)} cm** 벗어났습니다.(약 **{round((waist_min - waist)/2.54,2)}** 인치)'
                 if waist > waist_max:
-                    words += f' 허리둘레가 약 **{waist - waist_max} cm** 줄여야합니다.(약 **{round((waist - waist_max)/2.54,2)}** 인치)'
+                    words += f' 허리둘레가 약 **{round((waist - waist_max),2)} cm** 줄여야합니다.(약 **{round((waist - waist_max)/2.54,2)}** 인치)'
     
             return words
         st.markdown(words_for_person(profile_pdf['신체정보']['이름'],
@@ -500,8 +519,175 @@ def final_dash():
                          round(ideal_waist2['waist_min'],2),
                          round(ideal_waist2['waist_max'],2)
                          ))
-                             
-                             
+    # streamlit cloud 에선 챗봇 기능 빠짐
+    # st.markdown("### 건강 상담 챗봇")
+    # st.write("건강에 관한 질문을 해주세요. 챗봇이 답변해드립니다.")
+
+    # LMSTUDIO_URL = "http://localhost:1234/v1/chat/completions"
+    # # 맥
+    # device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
+
+    # # 윈도우
+    # # device = torch.device("cuda" if torch.cuda.is_available() else "cpu"¡¡™)
+    # embedding_model = SentenceTransformer('jhgan/ko-sroberta-multitask')
+    # embeddings = HuggingFaceEmbeddings(model_name="jhgan/ko-sroberta-multitask")
+
+    # @st.cache_resource
+    # def create_vector_store(data_folder):
+    #     documents = []
+    #     text_splitter = RecursiveCharacterTextSplitter(chunk_size=800, chunk_overlap=80)
+        
+    #     for file_name in os.listdir(data_folder):
+    #         file_path = os.path.join(data_folder, file_name)
+    #         if file_name.endswith(".txt"):
+    #             loader = TextLoader(file_path, encoding='utf-8')
+    #         elif file_name.endswith(".pdf"):
+    #             loader = PyPDFLoader(file_path)
+    #         elif file_name.endswith(".docx") or file_name.endswith(".doc"):
+    #             loader = UnstructuredWordDocumentLoader(file_path)
+    #         elif file_name.endswith(".csv"):
+    #             loader = CSVLoader(file_path, encoding='utf-8')
+    #         else:
+    #             st.warning(f"지원되지 않는 파일 형식: {file_name}")
+    #             continue
+            
+    #         loaded_docs = loader.load()
+    #         split_docs = text_splitter.split_documents(loaded_docs)
+    #         documents.extend(split_docs)
+
+    #     st.info(f"총 {len(documents)}개의 문서 청크가 로드되었습니다.")
+    #     return FAISS.from_documents(documents, embeddings)
+    # name = profile_pdf['신체정보']['이름']
+    # user_info = f"""
+    # 이름: {profile_pdf['신체정보']['이름']}
+    # 나이: {profile_pdf['신체정보']['만 나이']}세
+    # 성별: {profile_pdf['신체정보']['성별']}
+    # 키: {profile_pdf['신체정보']['키']}cm
+    # 체중: {profile_pdf['신체정보']['체중']}kg
+    # 허리둘레: {profile_pdf['신체정보']['허리둘레']}cm
+    # 당뇨병 여부: {profile_pdf['질병 정보']['당뇨병 여부']}
+    # 이상지질혈증 여부: {profile_pdf['질병 정보']['이상지질혈증 여부']}
+    # 음주 점수: {profile_pdf['점수 및 확률 정보']['음주 점수']}점
+    # 신체활동 점수: {profile_pdf['점수 및 확률 정보']['신체활동 점수']}점
+    # 고혈압 확률: {profile_pdf['점수 및 확률 정보']['고혈압 확률']}%
+    # 종합 평가: {words_for_person(profile_pdf['신체정보']['이름'],
+    #                     float(profile_pdf['신체정보']['키']),
+    #                     float(profile_pdf['신체정보']['허리둘레']),
+    #                     int(profile_score['음주 점수']),
+    #                     round(float(profile_score['신체활동 점수']),2),
+    #                     float(profile_score['고혈압 확률']),
+    #                     round(hypertension_rank,2),
+    #                     round(physical_activity_rank,2),
+    #                     round(ideal_waist['waist_min'],2),
+    #                     round(ideal_waist['waist_max'],2),
+    #                     round(ideal_waist2['waist_min'],2),
+    #                     round(ideal_waist2['waist_max'],2)
+    #                     )}
+    # """
+    
+    # custom_prompt_template = """
+    # //건강정보: {user_info}// 이건 사용자의 건강 정보다.
+    # //요리 레시피: 요리 레시피는 무조건 벡터 데이터베이스에서만 찾아서 제공하며, 벡터 데이터베이스에 없는 요리 레시피는 제공하지 않는다.
+    # //목적: 건강 정보를 토대로 알맞는 한끼 식사 레시피를 제공한다. 
+    # //해당 레시피의 요리 방법을 단계별로 설명하고, 영양성분 정보는 객관적으로 제공한다. 
+    # //해당 레시피에 대한 근거는 건강보고서의 내용을 바탕으로 왜 이음식을 선택했는지 설명한다.
+    # //컨텍스트: {context}
+    # //질문: {question}
+    # //답변: 요리 레시피를 물어봤다면 {name}님의 건강 상태에 따른 추천 레시피는 다음과 같습니다. 로 시작해
+    # """
+
+    # @st.cache_resource
+    # def get_memory():
+    #     return ConversationBufferMemory(memory_key="chat_history", return_messages=True)
+
+    # def chat_with_bot(question, vector_store, memory, user_info,name):
+    #     retriever = vector_store.as_retriever()
+    #     docs = retriever.get_relevant_documents(question)
+    #     context = "\n\n".join([doc.page_content for doc in docs])
+
+    #     chat_history = memory.chat_memory.messages
+        
+    #     if len(chat_history) > 5:
+    #         summary = "\n".join([f"{msg.type}: {msg.content}" for msg in chat_history[-5:]])
+    #     else:
+    #         summary = "\n".join([f"{msg.type}: {msg.content}" for msg in chat_history])
+
+    #     prompt = PromptTemplate(
+    #         template=custom_prompt_template,
+    #         input_variables=["user_info", "context", "question", "chat_history", "summary"]
+    #     )
+    #     formatted_prompt = prompt.format(
+    #         user_info=user_info,
+    #         context=context,
+    #         question=question,
+    #         chat_history=summary,
+    #         name=name
+    #         #summary="이전에 추천된 요리: " + ", ".join(st.session_state.get('recommended_dishes', []))
+    #     )
+
+    #     headers = {"Content-Type": "application/json"}
+    #     data = {
+    #         "messages": [{"role": "user", "content": formatted_prompt}],
+    #         "model": "teddylee777/EEVE-Korean-Instruct-10.8B-v1.0-gguf/EEVE-Korean-Instruct-10.8B-v1.0-Q5_K_M",
+    #         "temperature": 0.4
+    #     }
+        
+    #     response = requests.post(LMSTUDIO_URL, headers=headers, json=data)
+        
+    #     if response.status_code == 200:
+    #         bot_response = response.json()['choices'][0]['message']['content']
+    #         new_dishes = set(bot_response.split())  # 간단한 요리 추출 예시
+            
+    #         if 'recommended_dishes' not in st.session_state:
+    #             st.session_state.recommended_dishes = set()
+    #         st.session_state.recommended_dishes.update(new_dishes)
+            
+    #         memory.chat_memory.add_user_message(question)
+    #         memory.chat_memory.add_ai_message(bot_response)
+            
+    #         return bot_response
+    #     else:
+    #         return f"오류 발생: {response.status_code}"
+
+    # data_folder = "data/doc"
+    # vector_store = create_vector_store(data_folder)
+
+    # memory = get_memory()
+
+
+    # # 두 개의 열 생성
+    # left_column, right_column = st.columns(2)
+
+    # with left_column:
+    #     # 사용자 입력 영역
+    #     st.markdown("##### 질문하기")
+    #     user_input = st.text_area("", height=100)
+    #     submit_button = st.button("질문하기")
+        
+    #     if st.button("대화 초기화"):
+    #         memory.clear()
+    #         st.session_state.recommended_dishes = set()
+    #         st.rerun()
+
+    # with right_column:
+    #     # 챗봇 응답 영역
+    #     st.markdown("##### 챗봇 응답")
+    #     chat_container = st.container()
+
+    #     with chat_container:
+    #         for message in memory.chat_memory.messages:
+    #             with st.chat_message(message.type):
+    #                 type_effect(message.content, st)
+
+    #         if submit_button and user_input:
+    #             with st.chat_message("user"):
+    #                 type_effect(user_input, st)
+                
+    #             with st.chat_message("assistant"):
+    #                 with st.spinner("답변을 생성 중입니다..."):
+    #                     response = chat_with_bot(user_input, vector_store, memory, user_info,name)
+    #                 type_effect(response, st)
+
             
             
 
