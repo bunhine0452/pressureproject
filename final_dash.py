@@ -7,6 +7,13 @@ import numpy as np
 from funcs import cal_waist_ideal, linegaro ,linesero 
 
 def final_dash():
+    st.sidebar.markdown(
+        """
+        <div style="border-top: 3px solid #3F5277; width: 100%;"></div>
+        """,
+        unsafe_allow_html=True)
+    st.sidebar.markdown('<p style="font-size: 18px; color:rgba(246,244,241,1);"> 🦥 설문 결과를 확인하고 나의 건강상태를 모니터링 해보세요!(먼저 설문을 완료해주세요.)</p>', unsafe_allow_html=True)
+    st.sidebar.markdown("")
     if 'profile_pdf' not in st.session_state:
         st.error("프로필 정보가 없습니다. 먼저 설문을 완료해 주세요.")
         return
