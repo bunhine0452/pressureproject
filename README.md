@@ -7,3 +7,4 @@ https://highbloodpressure.streamlit.app
 - 팀원: 김현빈,신상길,이정화,정다운
 
 
+<img width="1162" alt="image" src="https://github.com/user-attachments/assets/fdbf4531-ec45-44f5-b363-1a307938ab82">
