@@ -464,15 +464,15 @@ def final_dash():
             
             if act_score != None:
                 words += f'\n- 신체활동 점수는 **{act_score}** 점으로, **{len(filtered_df)}명** 의 사람들 중에서 상위 **{physical_activity_rank}%** 입니다.'
-                if act_score >= -1 and act_score <= 2:
+                if act_score >= -1 and act_score <= 3:
                     words += f' 신체활동 점수가 낮은편으로 신체활동량을 늘리는 것을 추천합니다.'
-                elif act_score > 2 and act_score <= 4:
-                    words += f' 신체활동 점수가 평범한 편으로 신체활동량을 늘리는 것을 추천합니다.'
-                elif act_score > 4 and act_score <= 6:
+                elif act_score > 3 and act_score <= 7:
+                    words += f' 신체활동 점수가 평범한 편입니다.'
+                elif act_score > 7 and act_score <= 8:
                     words += f' 신체활동 점수가 높은 편으로 신체활동을 꾸준히 하시고 있습니다.'
-                elif act_score > 6 and act_score <= 8:
+                elif act_score > 8 and act_score <= 9:
                     words += f' 신체활동 점수가 매우 높습니다. 신체활동을 꾸준히 하시고 있습니다.'
-                elif act_score > 8:
+                elif act_score > 9:
                     words += f' 혹시 운동 선수 이신가요?'
                     
             if height != None:
