@@ -203,10 +203,10 @@ def cal_waist_ideal(height, gender,inch):
     Returns:
         tuple: (최소 허리둘레(cm), 최대 허리둘레(cm))
     """
-    if gender == "남자":
+    if gender == "남성":
         WHtR_min = 0.43
         WHtR_max = 0.50
-    elif gender == "여자":
+    elif gender == "여성":
         WHtR_min = 0.42
         WHtR_max = 0.47
     else:
