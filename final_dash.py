@@ -92,8 +92,8 @@ def final_dash():
             margin=dict(l=0, r=0, t=30, b=0),
             xaxis=dict(
                 range=[0, 0.63],
-                tickvals=[0, 0.43, 0.53, 0.58, 0.63],
-                ticktext=['0', '0.43', '0.53', '0.58', '0.63'],
+                tickvals=[0, 0.43, 0.50, 0.58, 0.63],
+                ticktext=['0', '0.43', '0.50', '0.58', '0.63'],
                 title='WhtR 값'
             ),
             yaxis=dict(showticklabels=False),
