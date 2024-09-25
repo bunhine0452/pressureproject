@@ -22,7 +22,7 @@ from model_test import model_test_page
 from form import form_page
 from final_dash import final_dash
 # 페이지 설정
-st.set_page_config(page_title='❤️‍🩹고혈의 고혈압', page_icon='❤️‍🩹', layout='wide')
+st.set_page_config(page_title='고혈압 예측모델', page_icon='❤️‍🩹', layout='wide')
 
 
 # 외부 CSS 불러오기
