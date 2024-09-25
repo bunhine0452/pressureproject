@@ -2,15 +2,48 @@ import pandas as pd
 import streamlit as st
 from PIL import Image
 from funcs import load_css, load_local_font, linegaro
-
+import requests
 
 def info_page():
+
+    st.sidebar.markdown(
+    """
+    <div style="border-top: 3px solid #3F5277; width: 100%;"></div>
+    """,
+    unsafe_allow_html=True)
+    st.sidebar.markdown('<p style="font-size: 15px; color:rgba(246,244,241,1);"> 🤙 You can contact us with</p>', unsafe_allow_html=True)
+    st.sidebar.markdown('<p style="font-size: 13px; color:rgba(218,192,167,1);"> 김현빈</br>hb000122@gmail.com </p>', unsafe_allow_html=True)
+    st.sidebar.markdown('<p style="font-size: 13px; color:rgba(218,192,167,1);"> 이정화</br>happychristmas1995@gmail.com</p>', unsafe_allow_html=True)
+    st.sidebar.markdown('<p style="font-size: 13px; color:rgba(218,192,167,1);"> 신상길</br>tkdrlfdk920@gmail.com</p>', unsafe_allow_html=True)
+    st.sidebar.markdown('<p style="font-size: 13px; color:rgba(218,192,167,1);"> 정다운</br>hb000122@gmail.com</p>', unsafe_allow_html=True)
+    st.sidebar.markdown("")
     logo = Image.open('./data/image/Teamicon-removebg-preview.png')
-    a,b = st.columns([1,7])
+    a,b,c= st.columns([1,7,2])
     with a:
         st.image('./data/image/temp_logo2-removebg-preview.png')
     with b:
         st.title('PROJECT : 고혈압 예측모델')
+    with c:
+        # GitHub API를 사용하여 리포지토리 정보 가져오기
+        repo_owner = "bunhine0452"
+        repo_name = "pressureproject"
+
+        # GitHub API 요청
+        url = f"https://api.github.com/repos/{repo_owner}/{repo_name}"
+        response = requests.get(url)
+        repo_info = response.json()
+
+        # 필요한 정보 추출
+        stars = repo_info.get("stargazers_count", 0)
+        forks = repo_info.get("forks_count", 0)
+        issues = repo_info.get("open_issues_count", 0)
+
+        # GitHub 정보 표시
+        st.markdown(f"[GitHub Repository](https://github.com/{repo_owner}/{repo_name})")
+        st.markdown(f"⭐ Stars: {stars}")
+        st.markdown(f"🍴 Forks: {forks}")
+        st.markdown(f"🐞 Open Issues: {issues}")
+    
     linegaro() 
     if 'count' not in st.session_state:
         st.session_state.count = 0
