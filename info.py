@@ -20,7 +20,7 @@ def info_page():
     st.sidebar.markdown(
         """
         <div align="center">
-            <p style="font-size: 17px; color:rgba(246,244,241,1); margin-bottom: 0px;">Welcome count</p>
+            <p style="font-size: 17px; color:rgba(246,244,241,1); margin-bottom: 0px;">Total views</p>
             <a href="https://www.cutercounter.com/" target="_blank">
                 <img src="https://www.cutercounter.com/hits.php?id=huxqdpfk&nd=6&style=13" border="0" alt="hit counter">
             </a>
