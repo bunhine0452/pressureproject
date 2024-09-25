@@ -450,13 +450,13 @@ def final_dash():
             
             if al_score != None:
                 words += f'\n- 음주 점수는 **{al_score}** 점으로,'
-                if al_score < 10:
+                if al_score > 0 and al_score <= 10 :
                     words += f' 음주 점수가 낮은편 입니다.'
-                elif al_score < 20:
+                elif al_score > 10 and al_score <= 30:
                     words += f' 음주 점수가 다소 낮은편 입니다.'
-                elif al_score < 30:
+                elif al_score > 30 and al_score <= 70:
                     words += f' 음주 점수가 살짝 높습니다.'
-                elif al_score < 35:
+                elif al_score > 70 and al_score <= 100:
                     words += f' 음주 점수가 매우 높아요.'
                 else:
                     words += f' 음주를 꼭 줄이셔야 합니다.'
