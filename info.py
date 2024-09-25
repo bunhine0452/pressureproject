@@ -17,7 +17,10 @@ def info_page():
     st.sidebar.markdown('<p style="font-size: 13px; color:rgba(218,192,167,1);"> 신상길</br>tkdrlfdk920@gmail.com</p>', unsafe_allow_html=True)
     st.sidebar.markdown('<p style="font-size: 13px; color:rgba(218,192,167,1);"> 정다운</br>jdu1941@gmail.com</p>', unsafe_allow_html=True)
     st.sidebar.markdown("")
-    st.sidebar.markdown("Welcome count")
+    st.sidebar.markdown(
+    '<div align="center"><p style="font-size: 13px; color:rgba(218,192,167,1);"> Welcome count</p></div>',
+    unsafe_allow_html=True
+)
     st.sidebar.markdown("""
     <div align="center">
     <a href="https://www.cutercounter.com/" target="_blank">
