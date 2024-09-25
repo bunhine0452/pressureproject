@@ -24,7 +24,6 @@ def info_page():
     </a>
     </div>
 """, unsafe_allow_html=True)
-""", unsafe_allow_html=True)
     logo = Image.open('./data/image/Teamicon-removebg-preview.png')
     a,b,c= st.columns([1,7,2])
     with a:
