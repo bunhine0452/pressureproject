@@ -49,7 +49,7 @@ def final_dash():
     
     st.markdown(f"# {profile_pdf['신체정보']['이름']} 님의 건강 대시보드")
     linegaro()
-    big_a , big_b = st.columns([1,2.5])
+    big_a , big_b = st.columns([0.7,2.5])
     with big_a:
         # 기본 정보 섹션
         profile_info = profile_pdf['신체정보']
