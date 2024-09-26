@@ -17,6 +17,7 @@ https://highbloodpressure.streamlit.app
 
 - <img width="614" alt="image" src="https://github.com/user-attachments/assets/720f07de-4c0c-41ee-8208-8f50f5cf69a9">
 - <img width="621" alt="image" src="https://github.com/user-attachments/assets/52571e0c-6acd-42f0-bbbb-ece636e562b2">
-
+- <img width="606" alt="image" src="https://github.com/user-attachments/assets/226657ab-2798-4790-b3ff-f20842bf9cb2">
+-
 
 
