@@ -8,11 +8,11 @@ https://highbloodpressure.streamlit.app
 
 
 
-<최종 결과대시보드(streamlit cloud용)>
-<img width="1193" alt="image" src="https://github.com/user-attachments/assets/12e182fa-60af-401a-b649-9b74708c09ef">
+- <최종 결과대시보드(streamlit cloud용)>
+- <img width="1193" alt="image" src="https://github.com/user-attachments/assets/12e182fa-60af-401a-b649-9b74708c09ef">
 
 
-<챗 봇 모델 스냅샷>
-<img width="557" alt="image" src="https://github.com/user-attachments/assets/672f4c25-b713-4132-849a-5bb0982a96cd">
+- <챗 봇 모델 스냅샷>
+- <img width="557" alt="image" src="https://github.com/user-attachments/assets/672f4c25-b713-4132-849a-5bb0982a96cd">
 
 
