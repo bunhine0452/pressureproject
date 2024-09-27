@@ -25,6 +25,7 @@ https://highbloodpressure.streamlit.app
 
 - <챗 봇 모델 스냅샷 4>
 - <img width="557" alt="image" src="https://github.com/user-attachments/assets/8882c2af-fece-4353-add5-9fea1e94ab00">
+- <img width="563" alt="image" src="https://github.com/user-attachments/assets/9d6bfd18-d08d-44ca-b022-75188ba9b427">
 
 
 
