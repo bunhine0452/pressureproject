@@ -171,7 +171,7 @@ def info_page():
         a, b, c, d = st.columns([2, 2, 2, 2])
         with a:
            st.markdown('### 김현빈')
-           st.markdown('##### 모델 설계 및 챗봇 구현 및 streamlit 대시보드 구성.')
+           st.markdown('##### 모델 설계 및 챗봇 구현 및 streamlit 대시보드 구성')
            st.write(''' 
                     모델에 필요한 데이터를 다시 분석하기도 하고 다양한 모델 그리고 기법들을 활용하여 
                     지속적인 모니터링을 통해 서비스에 사용될 최종 모델을 만들었습니다. 
