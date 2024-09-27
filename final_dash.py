@@ -495,15 +495,26 @@ def final_dash():
                     words += f' 혹시 운동 선수 이신가요?'
                     
             if height != None:
-                words += f'''\n- {name}님의 신장인 **{height} cm** 에서 이상적인 허리둘레는 **{waist_min} cm** ~ **{waist_max} cm** 입니다.
-                인치로는 **{waist_min2} 인치** ~ **{waist_max2} 인치** 입니다.
-                '''
-                if waist_min <= waist <= waist_max:
-                    words += f' 허리둘레가 이상적인 범위 안에 있어요.'
-                if waist < waist_min:
-                    words += f' 허리둘레가 약 **{round((waist_min - waist),2)} cm** 벗어났습니다.(약 **{round((waist_min - waist)/2.54,2)}** 인치)'
-                if waist > waist_max:
-                    words += f' 허리둘레가 약 **{round((waist - waist_max),2)} cm** 줄여야합니다.(약 **{round((waist - waist_max)/2.54,2)}** 인치)'
+                            words += f'''\n- {name}님의 신장인 **{height} cm** 에서 이상적인 허리둘레는 **{waist_min} cm** ~ **{waist_max} cm** 입니다.
+                            인치로는 **{waist_min2} 인치** ~ **{waist_max2} 인치** 입니다.
+                            '''
+                            if waist_min <= waist <= waist_max:
+                                words += f' 허리둘레가 이상적인 범위 안에 있어요.'
+                            if waist < waist_min:
+                                words += f' 허리둘레가 약 **{round((((waist_min+waist_max)/2) - waist),2)} cm** 벗어났습니다.(약 **{round(((waist_min+waist_max)/2 - waist)/2.54,2)}** 인치)'
+                            if waist > waist_max:
+                                words += f' 허리둘레가 약 **{round((waist - ((waist_max+waist_min)/2)),2)} cm** 줄여야합니다.(약 **{round((waist - ((waist_max+waist_min)/2))/2.54,2)}** 인치)'
+            if max_na != None:
+                if hypertension_proba > 0 and hypertension_proba < 20:
+                    words += f'\n - {name}님의 권장 한끼 나트륨 권장량은 **{(max_na*0.9)/3}mg** 입니다.'
+                if hypertension_proba > 20 and hypertension_proba < 30:
+                    words += f'\n - {name}님의 권장 한끼 나트륨 권장량은 **{(max_na*0.8)/3}mg** 입니다.'
+                if hypertension_proba > 30 and hypertension_proba < 40:
+                    words += f'\n - {name}님의 권장 한끼 나트륨 권장량은 **{(max_na*0.7)/3}mg** 입니다.'
+                if hypertension_proba > 40 and hypertension_proba < 50:
+                    words += f'\n - {name}님의 권장 한끼 나트륨 권장량은 **{(max_na*0.6)/3}mg** 입니다.'
+                if hypertension_proba > 50:
+                    words += f'\n - {name}님의 권장 한끼 나트륨 권장량은 **{(max_na*0.5)/3}mg** 입니다.'
     
             return words
         st.markdown(words_for_person(profile_pdf['신체정보']['이름'],
