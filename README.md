@@ -13,7 +13,7 @@ https://highbloodpressure.streamlit.app
 
 
 - <챗 봇 모델 스냅샷 1>
-- ![Uploading image.png…]()
+- <img width="1122" alt="image" src="https://github.com/user-attachments/assets/46ef9a74-e6b0-4f9f-bcbd-54958a317238">
 
 
 
