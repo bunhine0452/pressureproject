@@ -9,7 +9,6 @@ from funcs import cal_waist_ideal, linegaro ,linesero
 
 # import os
 # import requests
-# import streamlit as st
 # from langchain.document_loaders import TextLoader, PyPDFLoader, UnstructuredWordDocumentLoader, CSVLoader
 # from langchain.embeddings import HuggingFaceEmbeddings
 # from langchain.vectorstores import FAISS
@@ -49,12 +48,12 @@ def final_dash():
     
     st.markdown(f"# {profile_pdf['신체정보']['이름']} 님의 건강 대시보드")
     linegaro()
-    big_a , big_b = st.columns([1,2.7])
+    big_a , big_b = st.columns([1,2.5])
     with big_a:
         # 기본 정보 섹션
         profile_info = profile_pdf['신체정보']
         st.markdown(f"""
-        <div style="border: 2px solid rgba(0,0,0,0.1); border-radius: 10px; padding: 10px; width: 270px;">
+        <div style="border: 2px solid rgba(0,0,0,0.1); border-radius: 10px; padding: 10px; width: 300px;">
         - 만 나이: {profile_info['만 나이']}세<br>
         - 성별: {profile_info['성별']}<br>
         - 신장: {profile_info['키']}cm<br>
@@ -71,7 +70,7 @@ def final_dash():
         profile_info6 = profile_pdf['걷기/자전거 관련 정보']
         profile_score = profile_pdf['점수 및 확률 정보']
         st.markdown(f"""
-        <div style="border: 2px solid rgba(0,0,0,0.1); border-radius: 10px; padding: 10px; width: 270px;">
+        <div style="border: 2px solid rgba(0,0,0,0.1); border-radius: 10px; padding: 10px; width: 300px;">
         - 당뇨병 여부: {profile_info2['당뇨병 여부']}<br>
         - 이상지질혈증 여부: {profile_info2['이상지질혈증 여부']}<br>
         - 음주 점수: {int(profile_score['음주 점수'])}점<br>
@@ -422,6 +421,7 @@ def final_dash():
         # 인치
         ideal_waist2 = cal_waist_ideal( round(float(profile_pdf['신체정보']['키']),2), profile_pdf['신체정보']['성별'],True)
 
+
         # st.markdown(f'''
         #             <div style="border: 2px solid rgba(0,0,0,0.1); border-radius: 10px; padding: 10px; width: 300px;">
         #             <span style="font-weight: bold; ">{profile_pdf['신체정보']['이름']}</span>님의 이상적인 허리둘레는 약 
@@ -519,7 +519,19 @@ def final_dash():
                          round(ideal_waist2['waist_min'],2),
                          round(ideal_waist2['waist_max'],2)
                          ))
-    # streamlit cloud 에선 챗봇 기능 빠짐
+    linegaro()
+    st.markdown('#### 건강상태에 따른 요리 추천 챗봇')
+    a,b = st.columns(2)
+    with a:
+        st.markdown('###### 챗봇 스냅샷')
+        st.image('./data/chatbot_snapshot/챗봇 스냅샷1.png')
+    with b:
+        st.markdown('###### 레시피 스냅샷')
+        st.image('./data/chatbot_snapshot/챗봇 스냅샷2.png')
+    st.markdown('###### 챗봇 스냅샷2')
+    st.image('./data/chatbot_snapshot/챗봇 스냅샷4.png')
+    st.markdown('###### 챗봇 스냅샷3')
+    st.image('./data/chatbot_snapshot/챗봇 스냅샷5.png')
     # st.markdown("### 건강 상담 챗봇")
     # st.write("건강에 관한 질문을 해주세요. 챗봇이 답변해드립니다.")
 
@@ -535,7 +547,7 @@ def final_dash():
     # @st.cache_resource
     # def create_vector_store(data_folder):
     #     documents = []
-    #     text_splitter = RecursiveCharacterTextSplitter(chunk_size=800, chunk_overlap=80)
+    #     text_splitter = RecursiveCharacterTextSplitter(chunk_size=900, chunk_overlap=90)
         
     #     for file_name in os.listdir(data_folder):
     #         file_path = os.path.join(data_folder, file_name)
@@ -687,7 +699,6 @@ def final_dash():
     #                 with st.spinner("답변을 생성 중입니다..."):
     #                     response = chat_with_bot(user_input, vector_store, memory, user_info,name)
     #                 type_effect(response, st)
-
             
             
 

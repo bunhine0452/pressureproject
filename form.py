@@ -128,6 +128,7 @@ def form_page():
 
     # 제출이 완료되면 결과 출력
     if submitted:
+        st.success('나의 건강 대시보드 페이지로 이동해서 결과를 보실 수 있습니다.')
         alcohol_score = calculate_alcohol_score(ever_al,how_al,ones_al,wasted_al,stop_al,therapy_al)
         physical_activity_score = calculate_physical_activity_score(high_do,high_days,high_hour,high_min,mid_do,mid_days,mid_hour,mid_min,walk_do,walk_days,walk_hour,walk_min)
         whtR_category = calculate_whtR_category(gender,waist,height)
@@ -159,7 +160,7 @@ def form_page():
         # 보여줄 프로필
         a,b = st.columns(2)
         with a:
-            st.markdown(f'#### {name}님의 고혈압 확률은 {round(hypertension_proba * 100, 2)}% 입니다.')
+            #st.markdown(f'#### {name}님의 고혈압 확률은 {round(hypertension_proba * 100, 2)}% 입니다.')
             profile_pdf = {
                         "신체정보": {
                             "이름": name,
@@ -204,158 +205,158 @@ def form_page():
                         }
                     }
             st.session_state['profile_pdf'] = profile_pdf
-            st.markdown("##### 신체 정보", unsafe_allow_html=True)
-            st.markdown(f"""
-            <div style="border: 2px solid #dddbc5; border-radius: 10px; padding: 10px;">
-            - 이름: {profile_pdf['신체정보']['이름']}<br>
-            - 만 나이: {profile_pdf['신체정보']['만 나이']}<br>
-            - 성별: {profile_pdf['신체정보']['성별']}<br>
-            - 키: {profile_pdf['신체정보']['키']}<br>
-            - 체중: {profile_pdf['신체정보']['체중']}<br>
-            - 허리둘레: {profile_pdf['신체정보']['허리둘레']}
-            </div>
-            """, unsafe_allow_html=True)
-            st.write('')
-            re1 , re2 = st.columns(2)
-            with re1: 
-                st.markdown("##### 질병 정보", unsafe_allow_html=True)
-                st.markdown(f"""
-                <div style="border: 2px solid #7498bf; border-radius: 10px; padding: 10px;">
-                - 이상지질혈증 여부: {profile_pdf['질병 정보']['이상지질혈증 여부']}<br>
-                - 당뇨병 여부: {profile_pdf['질병 정보']['당뇨병 여부']}
-                </div>
-                """, unsafe_allow_html=True)
-            with re2:
-                st.markdown("##### 음주 점수", unsafe_allow_html=True)
-                st.markdown(f"""
-                <div style="border: 2px solid #ed7a9e; border-radius: 10px; padding: 10px;">
-                - 음주 점수: {profile_pdf['점수 및 확률 정보']['음주 점수']}
-                </div>
-                """, unsafe_allow_html=True)
-            st.write('')
-            re3 , re4 = st.columns(2)
-            with re3:
-                st.markdown("##### 신체활동 점수", unsafe_allow_html=True)
-                st.markdown(f"""
-                <div style="border: 2px solid #7498bf; border-radius: 10px; padding: 10px;">
-                - 신체활동 점수: {profile_pdf['점수 및 확률 정보']['신체활동 점수']}
-                </div>
-                """, unsafe_allow_html=True)
-            with re4:
-                st.markdown("##### 고혈압 확률", unsafe_allow_html=True)
-                st.markdown(f"""
-                <div style="border: 2px solid #ed7a9e; border-radius: 10px; padding: 10px;  ">
-                - 고혈압 확률: {profile_pdf['점수 및 확률 정보']['고혈압 확률']}
-                </div>
-                """, unsafe_allow_html=True)
+            # st.markdown("##### 신체 정보", unsafe_allow_html=True)
+            # st.markdown(f"""
+            # <div style="border: 2px solid #dddbc5; border-radius: 10px; padding: 10px;">
+            # - 이름: {profile_pdf['신체정보']['이름']}<br>
+            # - 만 나이: {profile_pdf['신체정보']['만 나이']}<br>
+            # - 성별: {profile_pdf['신체정보']['성별']}<br>
+            # - 키: {profile_pdf['신체정보']['키']}<br>
+            # - 체중: {profile_pdf['신체정보']['체중']}<br>
+            # - 허리둘레: {profile_pdf['신체정보']['허리둘레']}
+            # </div>
+            # """, unsafe_allow_html=True)
+            # st.write('')
+            # re1 , re2 = st.columns(2)
+            # with re1: 
+            #     st.markdown("##### 질병 정보", unsafe_allow_html=True)
+            #     st.markdown(f"""
+            #     <div style="border: 2px solid #7498bf; border-radius: 10px; padding: 10px;">
+            #     - 이상지질혈증 여부: {profile_pdf['질병 정보']['이상지질혈증 여부']}<br>
+            #     - 당뇨병 여부: {profile_pdf['질병 정보']['당뇨병 여부']}
+            #     </div>
+            #     """, unsafe_allow_html=True)
+            # with re2:
+            #     st.markdown("##### 음주 점수", unsafe_allow_html=True)
+            #     st.markdown(f"""
+            #     <div style="border: 2px solid #ed7a9e; border-radius: 10px; padding: 10px;">
+            #     - 음주 점수: {profile_pdf['점수 및 확률 정보']['음주 점수']}
+            #     </div>
+            #     """, unsafe_allow_html=True)
+            # st.write('')
+            # re3 , re4 = st.columns(2)
+            # with re3:
+            #     st.markdown("##### 신체활동 점수", unsafe_allow_html=True)
+            #     st.markdown(f"""
+            #     <div style="border: 2px solid #7498bf; border-radius: 10px; padding: 10px;">
+            #     - 신체활동 점수: {profile_pdf['점수 및 확률 정보']['신체활동 점수']}
+            #     </div>
+            #     """, unsafe_allow_html=True)
+            # with re4:
+            #     st.markdown("##### 고혈압 확률", unsafe_allow_html=True)
+            #     st.markdown(f"""
+            #     <div style="border: 2px solid #ed7a9e; border-radius: 10px; padding: 10px;  ">
+            #     - 고혈압 확률: {profile_pdf['점수 및 확률 정보']['고혈압 확률']}
+            #     </div>
+            #     """, unsafe_allow_html=True)
             
-        with b:
-            # 상위 % 계산 함수
-            def calculate_rank(df, column, profile_value):
-                rank = (df[column] < profile_value).mean() * 100
-                return 100 - rank  # 상위 % 반환
-            def calculate_mean(df, column):
-                return df[column].mean()
-            # 그래프를 그리는 함수
-            def plot_distribution(df, column, profile_value, title, profile_rank):
-                fig = px.histogram(df, x=column, nbins=20, title=title, color_discrete_sequence=['#FF6699'], opacity=0.75)
+        # with b:
+        #     # 상위 % 계산 함수
+        #     def calculate_rank(df, column, profile_value):
+        #         rank = (df[column] < profile_value).mean() * 100
+        #         return 100 - rank  # 상위 % 반환
+        #     def calculate_mean(df, column):
+        #         return df[column].mean()
+        #     # 그래프를 그리는 함수
+        #     def plot_distribution(df, column, profile_value, title, profile_rank):
+        #         fig = px.histogram(df, x=column, nbins=20, title=title, color_discrete_sequence=['#FF6699'], opacity=0.75)
                 
-                # 사용자 결과 값 표시 (세로선)
-                fig.add_vline(x=profile_value, line_dash="dash", line_color="red", 
-                            annotation_text=f"{name}님의 결과 (상위 {profile_rank:.2f}%)", annotation_position="top right")
-                # 그래프 레이아웃 조정
-                fig.update_layout(
-                    title={'text': title, 'x': 0.5, 'xanchor': 'center'},  # 타이틀 가운데 정렬
-                    xaxis_title=column,
-                    yaxis_title="인원수",
-                    template="plotly_white",
-                    height=300,
-                    width=600,
-                    plot_bgcolor='rgba(0, 0, 0, 0)', 
-                    paper_bgcolor='rgba(0, 0, 0, 0)'
-                )
-                st.plotly_chart(fig)
-                return fig
-            # 사용자 나이대 및 성별 필터링
-            user_age = age
-            user_gender = gender
+        #         # 사용자 결과 값 표시 (세로선)
+        #         fig.add_vline(x=profile_value, line_dash="dash", line_color="red", 
+        #                     annotation_text=f"{name}님의 결과 (상위 {profile_rank:.2f}%)", annotation_position="top right")
+        #         # 그래프 레이아웃 조정
+        #         fig.update_layout(
+        #             title={'text': title, 'x': 0.5, 'xanchor': 'center'},  # 타이틀 가운데 정렬
+        #             xaxis_title=column,
+        #             yaxis_title="인원수",
+        #             template="plotly_white",
+        #             height=300,
+        #             width=600,
+        #             plot_bgcolor='rgba(0, 0, 0, 0)', 
+        #             paper_bgcolor='rgba(0, 0, 0, 0)'
+        #         )
+        #         st.plotly_chart(fig)
+        #         return fig
+        #     # 사용자 나이대 및 성별 필터링
+        #     user_age = age
+        #     user_gender = gender
 
-            # 예시 데이터 로드 및 필터링
-            data_df = pd.read_csv('./data/csv/pridicted_df.csv')
-            filtered_df = data_df[(data_df['만나이'] >= (user_age - 5)) & (data_df['만나이'] <= (user_age + 5)) & 
-                                (data_df['성별'] == (1 if user_gender == "남자" else 2))]
+        #     # 예시 데이터 로드 및 필터링
+        #     data_df = pd.read_csv('./data/csv/pridicted_df.csv')
+        #     filtered_df = data_df[(data_df['만나이'] >= (user_age - 5)) & (data_df['만나이'] <= (user_age + 5)) & 
+        #                         (data_df['성별'] == (1 if user_gender == "남자" else 2))]
 
-            st.markdown(f'####  {name}님의 나이대 {user_age - 5}세 ~ {user_age + 5}세 속 분포 위치')
+        #     st.markdown(f'####  {name}님의 나이대 {user_age - 5}세 ~ {user_age + 5}세 속 분포 위치')
 
-            # 신체활동 점수 상위 % 계산 및 그래프
-            profile_physical_activity_score = physical_activity_score
-            physical_activity_rank = calculate_rank(filtered_df, '신체활동점수', profile_physical_activity_score)                
-            plot_distribution(filtered_df, '신체활동점수', profile_physical_activity_score, "신체활동 점수 분포", physical_activity_rank)
-            physical_activity_rank = round(physical_activity_rank,2)
-            physical_activity_mean = calculate_mean(filtered_df, '신체활동점수')
-            physical_activity_mean = round(physical_activity_mean,2)
+        #     # 신체활동 점수 상위 % 계산 및 그래프
+        #     profile_physical_activity_score = physical_activity_score
+        #     physical_activity_rank = calculate_rank(filtered_df, '신체활동점수', profile_physical_activity_score)                
+        #     plot_distribution(filtered_df, '신체활동점수', profile_physical_activity_score, "신체활동 점수 분포", physical_activity_rank)
+        #     physical_activity_rank = round(physical_activity_rank,2)
+        #     physical_activity_mean = calculate_mean(filtered_df, '신체활동점수')
+        #     physical_activity_mean = round(physical_activity_mean,2)
             
-            st.markdown(f"""
-            동나이대, 성별의 평균 신체활동 점수는: <span style="color:#7498bf;">{physical_activity_mean}점</span> 입니다.
-            <span style="color:#ed7a9e;">{name}</span>님의 신체활동 점수는 <span style="color:#ed7a9e;">{round(physical_activity_score,2)}점</span> 입니다.
-            """, unsafe_allow_html=True)
+        #     st.markdown(f"""
+        #     동나이대, 성별의 평균 신체활동 점수는: <span style="color:#7498bf;">{physical_activity_mean}점</span> 입니다.
+        #     <span style="color:#ed7a9e;">{name}</span>님의 신체활동 점수는 <span style="color:#ed7a9e;">{round(physical_activity_score,2)}점</span> 입니다.
+        #     """, unsafe_allow_html=True)
 
-            if physical_activity_rank < 20:
-                st.markdown(f'상위<span style="color:#ed7a9e;">{physical_activity_rank}%</span>로 동나이대, 성별 대비 매우 활동적이시네요!', unsafe_allow_html=True)
-            elif physical_activity_rank < 40:
-                st.markdown(f'상위<span style="color:#ed7a9e;">{physical_activity_rank}%</span>로 동나이대, 성별 대비 남들보다 더 많이 움직이시네요!', unsafe_allow_html=True)
-            elif physical_activity_rank < 60:
-                st.markdown(f'상위<span style="color:#ed7a9e;">{physical_activity_rank}%</span>로 동나이대, 성별 대비 남들만큼 움직이시네요!', unsafe_allow_html=True)
-            elif physical_activity_rank < 80:
-                st.markdown(f'상위<span style="color:#ed7a9e;">{physical_activity_rank}%</span>로 더 활동적일 필요가 있어요.', unsafe_allow_html=True)
-            else:
-                st.markdown(f'상위<span style="color:#ed7a9e;">{physical_activity_rank}%</span>로 더더욱 활동적일 필요가 있어요.', unsafe_allow_html=True)
+        #     if physical_activity_rank < 20:
+        #         st.markdown(f'상위<span style="color:#ed7a9e;">{physical_activity_rank}%</span>로 동나이대, 성별 대비 매우 활동적이시네요!', unsafe_allow_html=True)
+        #     elif physical_activity_rank < 40:
+        #         st.markdown(f'상위<span style="color:#ed7a9e;">{physical_activity_rank}%</span>로 동나이대, 성별 대비 남들보다 더 많이 움직이시네요!', unsafe_allow_html=True)
+        #     elif physical_activity_rank < 60:
+        #         st.markdown(f'상위<span style="color:#ed7a9e;">{physical_activity_rank}%</span>로 동나이대, 성별 대비 남들만큼 움직이시네요!', unsafe_allow_html=True)
+        #     elif physical_activity_rank < 80:
+        #         st.markdown(f'상위<span style="color:#ed7a9e;">{physical_activity_rank}%</span>로 더 활동적일 필요가 있어요.', unsafe_allow_html=True)
+        #     else:
+        #         st.markdown(f'상위<span style="color:#ed7a9e;">{physical_activity_rank}%</span>로 더더욱 활동적일 필요가 있어요.', unsafe_allow_html=True)
             
-            # 음주 점수 상위 % 계산 및 그래프
-            alcohol_score_rank = calculate_rank(filtered_df, '음주 점수', alcohol_score)
-            plot_distribution(filtered_df, '음주 점수', alcohol_score, "음주 점수 분포", alcohol_score_rank)
-            alcohol_score_rank = round(alcohol_score_rank,2)
-            alcohol_score_mean = calculate_mean(filtered_df, '음주 점수')
-            alcohol_score_mean = round(alcohol_score_mean,2)
+        #     # 음주 점수 상위 % 계산 및 그래프
+        #     alcohol_score_rank = calculate_rank(filtered_df, '음주 점수', alcohol_score)
+        #     plot_distribution(filtered_df, '음주 점수', alcohol_score, "음주 점수 분포", alcohol_score_rank)
+        #     alcohol_score_rank = round(alcohol_score_rank,2)
+        #     alcohol_score_mean = calculate_mean(filtered_df, '음주 점수')
+        #     alcohol_score_mean = round(alcohol_score_mean,2)
             
-            st.markdown(f"""
-            동나이대, 성별의 평균 음주 점수는: <span style="color:#7498bf;">{alcohol_score_mean}점</span> 입니다.
-            <span style="color:#ed7a9e;">{name}</span>님의 음주 점수는 <span style="color:#ed7a9e;">{round(alcohol_score,2)}점</span> 입니다.
-            """, unsafe_allow_html=True)
+        #     st.markdown(f"""
+        #     동나이대, 성별의 평균 음주 점수는: <span style="color:#7498bf;">{alcohol_score_mean}점</span> 입니다.
+        #     <span style="color:#ed7a9e;">{name}</span>님의 음주 점수는 <span style="color:#ed7a9e;">{round(alcohol_score,2)}점</span> 입니다.
+        #     """, unsafe_allow_html=True)
 
-            if 0 < alcohol_score_rank < 20:
-                st.markdown(f'상위<span style="color:#ed7a9e;">{alcohol_score_rank}%</span>로 동나이대, 성별 대비 음주 점수가 매우 높아요.', unsafe_allow_html=True)
-            elif alcohol_score_rank < 40:
-                st.markdown(f'상위<span style="color:#ed7a9e;">{alcohol_score_rank}%</span>로 동나이대, 성별 대비 음주 점수가 다소 높은편이에요.', unsafe_allow_html=True)
-            elif alcohol_score_rank < 60:
-                st.markdown(f'상위<span style="color:#ed7a9e;">{alcohol_score_rank}%</span>로 동나이대, 성별 대비 평범하세요.', unsafe_allow_html=True)
-            elif alcohol_score_rank < 80:
-                st.markdown(f'상위<span style="color:#ed7a9e;">{alcohol_score_rank}%</span>로 음주를 건강하게 즐기시고 있어요.', unsafe_allow_html=True)
-            else:
-                st.markdown(f'상위<span style="color:#ed7a9e;">{alcohol_score_rank}%</span>로 음주를 하시지 않는군요?', unsafe_allow_html=True)    
-            # 고혈압 확률 상위 % 계산 및 그래프
-            hypertension_proba_percent = hypertension_proba * 100
-            hypertension_rank = calculate_rank(filtered_df, '고혈압 확률', hypertension_proba_percent)
-            plot_distribution(filtered_df, '고혈압 확률', hypertension_proba_percent, "고혈압 확률 분포", hypertension_rank)
-            hypertension_rank = round(hypertension_rank,2)
-            hypertension_mean = calculate_mean(filtered_df, '고혈압 확률')
-            hypertension_mean = round(hypertension_mean,2)
+        #     if 0 < alcohol_score_rank < 20:
+        #         st.markdown(f'상위<span style="color:#ed7a9e;">{alcohol_score_rank}%</span>로 동나이대, 성별 대비 음주 점수가 매우 높아요.', unsafe_allow_html=True)
+        #     elif alcohol_score_rank < 40:
+        #         st.markdown(f'상위<span style="color:#ed7a9e;">{alcohol_score_rank}%</span>로 동나이대, 성별 대비 음주 점수가 다소 높은편이에요.', unsafe_allow_html=True)
+        #     elif alcohol_score_rank < 60:
+        #         st.markdown(f'상위<span style="color:#ed7a9e;">{alcohol_score_rank}%</span>로 동나이대, 성별 대비 평범하세요.', unsafe_allow_html=True)
+        #     elif alcohol_score_rank < 80:
+        #         st.markdown(f'상위<span style="color:#ed7a9e;">{alcohol_score_rank}%</span>로 음주를 건강하게 즐기시고 있어요.', unsafe_allow_html=True)
+        #     else:
+        #         st.markdown(f'상위<span style="color:#ed7a9e;">{alcohol_score_rank}%</span>로 음주를 하시지 않는군요?', unsafe_allow_html=True)    
+        #     # 고혈압 확률 상위 % 계산 및 그래프
+        #     hypertension_proba_percent = hypertension_proba * 100
+        #     hypertension_rank = calculate_rank(filtered_df, '고혈압 확률', hypertension_proba_percent)
+        #     plot_distribution(filtered_df, '고혈압 확률', hypertension_proba_percent, "고혈압 확률 분포", hypertension_rank)
+        #     hypertension_rank = round(hypertension_rank,2)
+        #     hypertension_mean = calculate_mean(filtered_df, '고혈압 확률')
+        #     hypertension_mean = round(hypertension_mean,2)
             
-            st.markdown(f"""
-                동나이대, 성별의 평균 고혈압 확률은: <span style="color:#7498bf;">{hypertension_mean}%</span> 입니다. 
-                <span style="color:#ed7a9e;">{name}</span>님의 고혈압 확률은 <span style="color:#ed7a9e;">{round(hypertension_proba*100,2)}%</span> 입니다. 
-                """, unsafe_allow_html=True)
+        #     st.markdown(f"""
+        #         동나이대, 성별의 평균 고혈압 확률은: <span style="color:#7498bf;">{hypertension_mean}%</span> 입니다. 
+        #         <span style="color:#ed7a9e;">{name}</span>님의 고혈압 확률은 <span style="color:#ed7a9e;">{round(hypertension_proba*100,2)}%</span> 입니다. 
+        #         """, unsafe_allow_html=True)
             
-            if hypertension_rank < 20:
-                st.markdown(f'상위<span style="color:#ed7a9e;">{hypertension_rank}%</span>로 동나이대, 성별 대비 고혈압 확률이 매우 높아요. 필히 주의가 필요합니다.', unsafe_allow_html=True)
-            elif hypertension_rank < 40:
-                st.markdown(f'상위<span style="color:#ed7a9e;">{hypertension_rank}%</span>로 동나이대, 성별 대비 고혈압 확률이 높아요, 주의가 필요할수도 있어요.', unsafe_allow_html=True)
-            elif hypertension_rank < 60:
-                st.markdown(f'상위<span style="color:#ed7a9e;">{hypertension_rank}%</span>로 동나이대, 성별 대비 고혈압에 다소 주의가 필요해요.', unsafe_allow_html=True)
-            elif hypertension_rank < 80:
-                st.markdown(f'상위<span style="color:#ed7a9e;">{hypertension_rank}%</span>로 동나이대, 성별 대비 평범해요.', unsafe_allow_html=True)
-            else:
-                st.markdown(f'상위<span style="color:#ed7a9e;">{hypertension_rank}%</span>로 매우 건강한 편입니다.', unsafe_allow_html=True)
+        #     if hypertension_rank < 20:
+        #         st.markdown(f'상위<span style="color:#ed7a9e;">{hypertension_rank}%</span>로 동나이대, 성별 대비 고혈압 확률이 매우 높아요. 필히 주의가 필요합니다.', unsafe_allow_html=True)
+        #     elif hypertension_rank < 40:
+        #         st.markdown(f'상위<span style="color:#ed7a9e;">{hypertension_rank}%</span>로 동나이대, 성별 대비 고혈압 확률이 높아요, 주의가 필요할수도 있어요.', unsafe_allow_html=True)
+        #     elif hypertension_rank < 60:
+        #         st.markdown(f'상위<span style="color:#ed7a9e;">{hypertension_rank}%</span>로 동나이대, 성별 대비 고혈압에 다소 주의가 필요해요.', unsafe_allow_html=True)
+        #     elif hypertension_rank < 80:
+        #         st.markdown(f'상위<span style="color:#ed7a9e;">{hypertension_rank}%</span>로 동나이대, 성별 대비 평범해요.', unsafe_allow_html=True)
+        #     else:
+        #         st.markdown(f'상위<span style="color:#ed7a9e;">{hypertension_rank}%</span>로 매우 건강한 편입니다.', unsafe_allow_html=True)
 
             
             # font_regular = './fonts/NanumGothic.ttf'
