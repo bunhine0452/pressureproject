@@ -5,7 +5,7 @@ import plotly.express as px
 from PIL import Image
 import numpy as np
 from funcs import cal_waist_ideal, linegaro ,linesero 
-
+import time
 
 # import os
 # import requests
@@ -19,7 +19,8 @@ from funcs import cal_waist_ideal, linegaro ,linesero
 # from langchain.memory import ConversationBufferMemory
 # from langchain.chains.summarize import load_summarize_chain
 # from langchain.llms import OpenAI
-# import time
+
+
 
 def type_effect(text, container):
     placeholder = container.empty()
@@ -48,12 +49,12 @@ def final_dash():
     
     st.markdown(f"# {profile_pdf['신체정보']['이름']} 님의 건강 대시보드")
     linegaro()
-    big_a , big_b = st.columns([1,2.7])
+    big_a , big_b = st.columns([1,2.5])
     with big_a:
         # 기본 정보 섹션
         profile_info = profile_pdf['신체정보']
         st.markdown(f"""
-        <div style="border: 2px solid rgba(0,0,0,0.1); border-radius: 10px; padding: 10px; width: 270px;">
+        <div style="border: 2px solid rgba(0,0,0,0.1); border-radius: 10px; padding: 10px; width: 300px;">
         - 만 나이: {profile_info['만 나이']}세<br>
         - 성별: {profile_info['성별']}<br>
         - 신장: {profile_info['키']}cm<br>
@@ -70,7 +71,7 @@ def final_dash():
         profile_info6 = profile_pdf['걷기/자전거 관련 정보']
         profile_score = profile_pdf['점수 및 확률 정보']
         st.markdown(f"""
-        <div style="border: 2px solid rgba(0,0,0,0.1); border-radius: 10px; padding: 10px; width: 270px;">
+        <div style="border: 2px solid rgba(0,0,0,0.1); border-radius: 10px; padding: 10px; width: 300px;">
         - 당뇨병 여부: {profile_info2['당뇨병 여부']}<br>
         - 이상지질혈증 여부: {profile_info2['이상지질혈증 여부']}<br>
         - 음주 점수: {int(profile_score['음주 점수'])}점<br>
@@ -87,7 +88,7 @@ def final_dash():
             waist = float(profile_pdf['신체정보']['허리둘레'].replace('cm', ''))
             whtr = waist / height_m
             
-            # WhtR 차트 생성
+            # WhtR ��� 차트 생성
             fig_whtr = go.Figure()
             
             # 배경 바 추가
@@ -495,15 +496,15 @@ def final_dash():
                     words += f' 혹시 운동 선수 이신가요?'
                     
             if height != None:
-                            words += f'''\n- {name}님의 신장인 **{height} cm** 에서 이상적인 허리둘레는 **{waist_min} cm** ~ **{waist_max} cm** 입니다.
-                            인치로는 **{waist_min2} 인치** ~ **{waist_max2} 인치** 입니다.
-                            '''
-                            if waist_min <= waist <= waist_max:
-                                words += f' 허리둘레가 이상적인 범위 안에 있어요.'
-                            if waist < waist_min:
-                                words += f' 허리둘레가 약 **{round((((waist_min+waist_max)/2) - waist),2)} cm** 벗어났습니다.(약 **{round(((waist_min+waist_max)/2 - waist)/2.54,2)}** 인치)'
-                            if waist > waist_max:
-                                words += f' 허리둘레가 약 **{round((waist - ((waist_max+waist_min)/2)),2)} cm** 줄여야합니다.(약 **{round((waist - ((waist_max+waist_min)/2))/2.54,2)}** 인치)'
+                words += f'''\n- {name}님의 신장인 **{height} cm** 에서 이상적인 허리둘레는 **{waist_min} cm** ~ **{waist_max} cm** 입니다.
+                인치로는 **{waist_min2} 인치** ~ **{waist_max2} 인치** 입니다.
+                '''
+                if waist_min <= waist <= waist_max:
+                    words += f' 허리둘레가 이상적인 범위 안에 있어요.'
+                if waist < waist_min:
+                    words += f' 허리둘레가 약 **{round((((waist_min+waist_max)/2) - waist),2)} cm** 벗어났습니다.(약 **{round(((waist_min+waist_max)/2 - waist)/2.54,2)}** 인치)'
+                if waist > waist_max:
+                    words += f' 허리둘레가 약 **{round((waist - ((waist_max+waist_min)/2)),2)} cm** 줄여야합니다.(약 **{round((waist - ((waist_max+waist_min)/2))/2.54,2)}** 인치)'
             if max_na != None:
                 if hypertension_proba > 0 and hypertension_proba < 20:
                     words += f'\n - {name}님의 권장 한끼 나트륨 권장량은 **{(max_na*0.9)/3}mg** 입니다.'
@@ -515,6 +516,8 @@ def final_dash():
                     words += f'\n - {name}님의 권장 한끼 나트륨 권장량은 **{(max_na*0.6)/3}mg** 입니다.'
                 if hypertension_proba > 50:
                     words += f'\n - {name}님의 권장 한끼 나트륨 권장량은 **{(max_na*0.5)/3}mg** 입니다.'
+            
+
     
             return words
         st.markdown(words_for_person(profile_pdf['신체정보']['이름'],
@@ -532,19 +535,13 @@ def final_dash():
                          ))
     linegaro()
     st.markdown('#### 건강상태에 따른 요리 추천 챗봇')
-    a,b = st.columns(2)
-    with a:
-        st.markdown('###### 챗봇 스냅샷')
-        st.image('./data/chatbot_snapshot/챗봇 스냅샷1.png')
-    with b:
-        st.markdown('###### 레시피 스냅샷')
-        st.image('./data/chatbot_snapshot/챗봇 스냅샷2.png')
-    # st.markdown('###### 챗봇 스냅샷2')
-    # st.image('./data/chatbot_snapshot/챗봇 스냅샷4.png')
-    # st.markdown('###### 챗봇 스냅샷3')
-    # st.image('./data/chatbot_snapshot/챗봇 스냅샷5.png')
-    # st.markdown("### 건강 상담 챗봇")
-    # st.write("건강에 관한 질문을 해주세요. 챗봇이 답변해드립니다.")
+    st.markdown('###### 챗봇 스냅샷')
+    st.image('./data/chatbot_snapshot/챗봇 스냅샷1.png')
+    
+    
+    # 챗 봇 사용시 주석 해제 (import 도)
+    # st.markdown("### 요리 추천 챗봇")
+    # st.write("결과에 따른 요리를 추천해줍니다.")
 
     # LMSTUDIO_URL = "http://localhost:1234/v1/chat/completions"
     # # 맥
@@ -558,7 +555,7 @@ def final_dash():
     # @st.cache_resource
     # def create_vector_store(data_folder):
     #     documents = []
-    #     text_splitter = RecursiveCharacterTextSplitter(chunk_size=900, chunk_overlap=90)
+    #     text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
         
     #     for file_name in os.listdir(data_folder):
     #         file_path = os.path.join(data_folder, file_name)
@@ -589,11 +586,8 @@ def final_dash():
     # 체중: {profile_pdf['신체정보']['체중']}kg
     # 허리둘레: {profile_pdf['신체정보']['허리둘레']}cm
     # 당뇨병 여부: {profile_pdf['질병 정보']['당뇨병 여부']}
-    # 이상지질혈증 여부: {profile_pdf['질병 정보']['이상지질혈증 여부']}
-    # 음주 점수: {profile_pdf['점수 및 확률 정보']['음주 점수']}점
-    # 신체활동 점수: {profile_pdf['점수 및 확률 정보']['신체활동 점수']}점
-    # 고혈압 확률: {profile_pdf['점수 및 확률 정보']['고혈압 확률']}%
-    # 종합 평가: {words_for_person(profile_pdf['신체정보']['이름'],
+    # 이상지질혈증 여부: {profile_pdf['질병 정보']['이상지질혈증 여부']}\n
+    # <{name}님의 종합 평가> \n {words_for_person(profile_pdf['신체정보']['이름'],
     #                     float(profile_pdf['신체정보']['키']),
     #                     float(profile_pdf['신체정보']['허리둘레']),
     #                     int(profile_score['음주 점수']),
@@ -609,14 +603,12 @@ def final_dash():
     # """
     
     # custom_prompt_template = """
-    # //건강정보: {user_info}// 이건 사용자의 건강 정보다.
-    # //요리 레시피: 요리 레시피는 무조건 벡터 데이터베이스에서만 찾아서 제공하며, 벡터 데이터베이스에 없는 요리 레시피는 제공하지 않는다.
-    # //목적: 건강 정보를 토대로 알맞는 한끼 식사 레시피를 제공한다. 
-    # //해당 레시피의 요리 방법을 단계별로 설명하고, 영양성분 정보는 객관적으로 제공한다. 
-    # //해당 레시피에 대한 근거는 건강보고서의 내용을 바탕으로 왜 이음식을 선택했는지 설명한다.
-    # //컨텍스트: {context}
-    # //질문: {question}
-    # //답변: 요리 레시피를 물어봤다면 {name}님의 건강 상태에 따른 추천 레시피는 다음과 같습니다. 로 시작해
+    # 사용자의 건강정보: {user_info}\n
+    # 요리 레시피: 요리 레시피는 무조건 벡터 데이터베이스에서만 찾아서 제공하며, 벡터 데이터베이스에 없는 요리 레시피는 제공하지 않는다.\n
+    # 목적: {name}의 하루 권장 나트륨 크게 넘지 않는 한끼 정보를 제공한다 \n 
+    # 해당 레시피에 대한 근거는 건강보고서의 내용을 바탕으로 왜 이음식을 선택했는지 설명한다.\n
+    # 컨텍스트: {context}\n
+    # 질문: {question}\n
     # """
 
     # @st.cache_resource
@@ -651,8 +643,8 @@ def final_dash():
     #     headers = {"Content-Type": "application/json"}
     #     data = {
     #         "messages": [{"role": "user", "content": formatted_prompt}],
-    #         "model": "teddylee777/EEVE-Korean-Instruct-10.8B-v1.0-gguf/EEVE-Korean-Instruct-10.8B-v1.0-Q5_K_M",
-    #         "temperature": 0.4
+    #         "model": "teddylee777/EEVE-Korean-Instruct-10.8B-v1.0-gguf",
+    #         "temperature": 0.2
     #     }
         
     #     response = requests.post(LMSTUDIO_URL, headers=headers, json=data)
@@ -710,6 +702,11 @@ def final_dash():
     #                 with st.spinner("답변을 생성 중입니다..."):
     #                     response = chat_with_bot(user_input, vector_store, memory, user_info,name)
     #                 type_effect(response, st)
+
+        
+    
+                    
+                    
             
             
 
