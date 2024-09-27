@@ -539,10 +539,10 @@ def final_dash():
     with b:
         st.markdown('###### 레시피 스냅샷')
         st.image('./data/chatbot_snapshot/챗봇 스냅샷2.png')
-    st.markdown('###### 챗봇 스냅샷2')
-    st.image('./data/chatbot_snapshot/챗봇 스냅샷4.png')
-    st.markdown('###### 챗봇 스냅샷3')
-    st.image('./data/chatbot_snapshot/챗봇 스냅샷5.png')
+    # st.markdown('###### 챗봇 스냅샷2')
+    # st.image('./data/chatbot_snapshot/챗봇 스냅샷4.png')
+    # st.markdown('###### 챗봇 스냅샷3')
+    # st.image('./data/chatbot_snapshot/챗봇 스냅샷5.png')
     # st.markdown("### 건강 상담 챗봇")
     # st.write("건강에 관한 질문을 해주세요. 챗봇이 답변해드립니다.")
 
