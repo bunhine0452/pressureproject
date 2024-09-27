@@ -48,12 +48,12 @@ def final_dash():
     
     st.markdown(f"# {profile_pdf['신체정보']['이름']} 님의 건강 대시보드")
     linegaro()
-    big_a , big_b = st.columns([1,2.5])
+    big_a , big_b = st.columns([1,2.7])
     with big_a:
         # 기본 정보 섹션
         profile_info = profile_pdf['신체정보']
         st.markdown(f"""
-        <div style="border: 2px solid rgba(0,0,0,0.1); border-radius: 10px; padding: 10px; width: 300px;">
+        <div style="border: 2px solid rgba(0,0,0,0.1); border-radius: 10px; padding: 10px; width: 270px;">
         - 만 나이: {profile_info['만 나이']}세<br>
         - 성별: {profile_info['성별']}<br>
         - 신장: {profile_info['키']}cm<br>
@@ -70,7 +70,7 @@ def final_dash():
         profile_info6 = profile_pdf['걷기/자전거 관련 정보']
         profile_score = profile_pdf['점수 및 확률 정보']
         st.markdown(f"""
-        <div style="border: 2px solid rgba(0,0,0,0.1); border-radius: 10px; padding: 10px; width: 300px;">
+        <div style="border: 2px solid rgba(0,0,0,0.1); border-radius: 10px; padding: 10px; width: 270px;">
         - 당뇨병 여부: {profile_info2['당뇨병 여부']}<br>
         - 이상지질혈증 여부: {profile_info2['이상지질혈증 여부']}<br>
         - 음주 점수: {int(profile_score['음주 점수'])}점<br>
@@ -87,7 +87,7 @@ def final_dash():
             waist = float(profile_pdf['신체정보']['허리둘레'].replace('cm', ''))
             whtr = waist / height_m
             
-            # WhtR ��� 차트 생성
+            # WhtR 차트 생성
             fig_whtr = go.Figure()
             
             # 배경 바 추가
