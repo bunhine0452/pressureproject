@@ -8,6 +8,20 @@ https://highbloodpressure.streamlit.app
 
 
 
-  <최종 결과대시보드(streamlit cloud용)>
-<img width="1150" alt="image" src="https://github.com/user-attachments/assets/c69d540d-c4bd-482f-a74d-13ea122c2222">
+- <최종 결과대시보드(streamlit cloud용)>
+- <img width="1193" alt="image" src="https://github.com/user-attachments/assets/12e182fa-60af-401a-b649-9b74708c09ef">
+
+
+- <챗 봇 모델 스냅샷 1>
+- <img width="661" alt="image" src="https://github.com/user-attachments/assets/2ee24c04-7502-4a70-b1c9-5676d5c54773">
+
+- <챗 봇 모델 스냅샷 2>
+- <img width="614" alt="image" src="https://github.com/user-attachments/assets/720f07de-4c0c-41ee-8208-8f50f5cf69a9">
+
+- <챗 봇 모델 스냅샷 3>
+- <img width="621" alt="image" src="https://github.com/user-attachments/assets/52571e0c-6acd-42f0-bbbb-ece636e562b2">
+- <img width="606" alt="image" src="https://github.com/user-attachments/assets/226657ab-2798-4790-b3ff-f20842bf9cb2">
+- <img width="579" alt="image" src="https://github.com/user-attachments/assets/c1b33f9a-26ef-480e-ae4e-f8bda9dddaef">
+
+
 
