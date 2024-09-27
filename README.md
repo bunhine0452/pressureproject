@@ -23,6 +23,10 @@ https://highbloodpressure.streamlit.app
 - <img width="606" alt="image" src="https://github.com/user-attachments/assets/226657ab-2798-4790-b3ff-f20842bf9cb2">
 - <img width="579" alt="image" src="https://github.com/user-attachments/assets/c1b33f9a-26ef-480e-ae4e-f8bda9dddaef">
 
+- <챗 봇 모델 스냅샷 4>
+- <img width="557" alt="image" src="https://github.com/user-attachments/assets/8882c2af-fece-4353-add5-9fea1e94ab00">
+
+
 
 #### 데이터 출처
 - Model = 국민 건강 영양조사 원시 데이터 8기9기 (배포x)
