@@ -39,8 +39,8 @@ def dashboard_page():
                     <span style="font-size: 18px; font-weight: bold;">Train</span>
                 </div>
                 <div style="margin-top: -20px;">
-                    <span style="color:#beef69; font-size: 25px; font-weight: bold;">11756명명</span>
-                    <span style="color:#beef69; font-size: 15px; font-weight: bold;">{len(df1)} 명</span>
+                    <span style="color:#beef69; font-size: 25px; font-weight: bold;">11756명</span>
+                    <span style="color:#beef69; font-size: 15px;">전처리전:{len(df1)} 명</span>
                 </div>
                 
                 """,unsafe_allow_html=True)
