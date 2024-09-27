@@ -447,7 +447,7 @@ def final_dash():
                              waist_min2,
                              waist_max2
                              ):
-            
+            max_na = 2400
             words = f'''
             {name}님의 설문에 대한 종합 평가는 다음과 같습니다.
             '''
