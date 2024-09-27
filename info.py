@@ -12,10 +12,10 @@ def info_page():
     """,
     unsafe_allow_html=True)
     st.sidebar.markdown('<p style="font-size: 15px; color:rgba(246,244,241,1);"> 🤙 You can contact us with</p>', unsafe_allow_html=True)
-    st.sidebar.markdown('<p style="font-size: 13px; color:rgba(218,192,167,1);"> 김현빈</br>hb000122@gmail.com </p>', unsafe_allow_html=True)
-    st.sidebar.markdown('<p style="font-size: 13px; color:rgba(218,192,167,1);"> 이정화</br>happychristmas1995@gmail.com</p>', unsafe_allow_html=True)
-    st.sidebar.markdown('<p style="font-size: 13px; color:rgba(218,192,167,1);"> 신상길</br>tkdrlfdk920@gmail.com</p>', unsafe_allow_html=True)
-    st.sidebar.markdown('<p style="font-size: 13px; color:rgba(218,192,167,1);"> 정다운</br>jdu1941@gmail.com</p>', unsafe_allow_html=True)
+    st.sidebar.markdown('<p style="font-size: 13px; color:rgba(253,250,241,1);"> 김현빈</br>hb000122@gmail.com </p>', unsafe_allow_html=True)
+    st.sidebar.markdown('<p style="font-size: 13px; color:rgba(253,250,241,1);"> 이정화</br>happychristmas1995@gmail.com</p>', unsafe_allow_html=True)
+    st.sidebar.markdown('<p style="font-size: 13px; color:rgba(253,250,241,1);"> 신상길</br>tkdrlfdk920@gmail.com</p>', unsafe_allow_html=True)
+    st.sidebar.markdown('<p style="font-size: 13px; color:rgba(253,250,241,1);"> 정다운</br>jdu1941@gmail.com</p>', unsafe_allow_html=True)
     st.sidebar.markdown("")
     st.sidebar.markdown(
         """
