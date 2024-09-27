@@ -40,7 +40,7 @@ def dashboard_page():
                 </div>
                 <div style="margin-top: -20px;">
                     <span style="color:#beef69; font-size: 25px; font-weight: bold;">11756명</span>
-                    <span style="color:#beef69; font-size: 15px;">전처리전:{len(df1)} 명</span>
+                    <span style="color:#a0daa9; font-size: 13px;">전처리전:{len(df1)} 명</span>
                 </div>
                 
                 """,unsafe_allow_html=True)
