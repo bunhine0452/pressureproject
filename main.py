@@ -1,3 +1,5 @@
+# 기본 라이브러리 먼저 import
+import numpy as np
 import pandas as pd
 import streamlit as st
 from PIL import Image

@@ -280,23 +280,32 @@ def dashboard_page():
     with tab2:
         st.write(f'### 이상지 제거 후 총 데이터 : {len(step1)}명')
         
-        col1,col2,col3,col4,col5 = st.columns([3,0.5,3,0.5,3])
-        with col1:
-            weight_before = px.histogram(step1_1, x=before['체중'], title=f"이상치 제거 전 체중",color_discrete_sequence=['#e6adae'],opacity=0.75)
-            weight_before.update_layout(plot_bgcolor='rgba(0, 0, 0, 0)', paper_bgcolor='rgba(0, 0, 0, 0)')
-            st.plotly_chart(weight_before)
-        with col2:
-            linesero()
-        with col3:   
-            height_before = px.histogram(step1_1, x=step1_1['신장'], title=f"이상치 제거 전 신장",color_discrete_sequence=['#e6adae'],opacity=0.75)
-            height_before.update_layout(plot_bgcolor='rgba(0, 0, 0, 0)', paper_bgcolor='rgba(0, 0, 0, 0)')
-            st.plotly_chart(height_before)
-        with col4:
-            linesero()
-        with col5:
-            hip_before = px.histogram(step1_1, x=step1_1['허리둘레'], title=f"이상치 제거전 허리둘레",color_discrete_sequence=['#e6adae'],opacity=0.75)
-            hip_before.update_layout(plot_bgcolor='rgba(0, 0, 0, 0)', paper_bgcolor='rgba(0, 0, 0, 0)')
-            st.plotly_chart(hip_before)                
+        # 데이터 길이 확인
+        print("step1_1 길이:", len(step1_1))
+        print("before['체중'] 길이:", len(before['체중']))
+
+        # 데이터프레임 길이 맞추기
+        step1_1 = step1_1.reset_index(drop=True)
+        before = before.reset_index(drop=True)
+
+        # 히스토그램 생성
+        weight_before = px.histogram(
+            before,  # step1_1 대신 before 데이터프레임 직접 사용
+            x='체중', 
+            title="이상치 제거 전 체중",
+            color_discrete_sequence=['#e6adae'],
+            opacity=0.75
+        )
+        weight_before.update_layout(plot_bgcolor='rgba(0, 0, 0, 0)', paper_bgcolor='rgba(0, 0, 0, 0)')
+        st.plotly_chart(weight_before)
+        linesero()
+        height_before = px.histogram(step1_1, x=step1_1['신장'], title=f"이상치 제거 전 신장",color_discrete_sequence=['#e6adae'],opacity=0.75)
+        height_before.update_layout(plot_bgcolor='rgba(0, 0, 0, 0)', paper_bgcolor='rgba(0, 0, 0, 0)')
+        st.plotly_chart(height_before)
+        linesero()
+        hip_before = px.histogram(step1_1, x=step1_1['허리둘레'], title=f"이상치 제거전 허리둘레",color_discrete_sequence=['#e6adae'],opacity=0.75)
+        hip_before.update_layout(plot_bgcolor='rgba(0, 0, 0, 0)', paper_bgcolor='rgba(0, 0, 0, 0)')
+        st.plotly_chart(hip_before)                
         col1,col2,col3,col4,col5 = st.columns([3,0.5,3,0.5,3])
         with col1:
             weight_after = px.histogram(step1, x=step1['체중'], title=f"이상치 제거후 체중",color_discrete_sequence=['#ed7777'],opacity=0.75)
